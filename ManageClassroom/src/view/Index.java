@@ -23,6 +23,5 @@ public class Index extends javax.swing.JFrame {
         Login frameDesignTest = new Login();
         frameDesignTest.setVisible(true);
         TimeUnit.SECONDS.sleep(1);
-
     }
 }
