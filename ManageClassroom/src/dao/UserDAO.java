@@ -33,16 +33,17 @@ public class UserDAO {
         Query query = session.createQuery(hql);
         query.setParameter("id", id);
         query.uniqueResult();
+
         boolean isNotResult = query.list().isEmpty();
 
         if (isNotResult) {
 //            System.out.println("Not result");
+            session.getTransaction().commit();
             return null;
         } else {
 //            System.out.println("Have result");
             User temp = (User) query.list().get(0);
             session.getTransaction().commit();
-
             return temp;
         }
     }
