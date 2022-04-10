@@ -4,6 +4,17 @@
  */
 package view;
 
+import static dao.UserDAO.findOneById;
+import static util.handlePassword.comparePassword;
+
+import entity.User;
+import java.security.NoSuchAlgorithmException;
+import javax.swing.JOptionPane;
+import static util.handlePassword.comparePassword;
+import static util.handlePassword.getSHA;
+import static util.handlePassword.hashPassword;
+import static util.handlePassword.toHexString;
+
 /**
  *
  * @author holohoi
@@ -247,16 +258,40 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = inputUsername.getText();
         String password = inputPassword.getText();
-        System.out.println("username: " + username + " password: " + password);
-        this.setVisible(false);
+
+        if ("".equals(username)) {
+            JOptionPane.showMessageDialog(this, "Please enter the username field!");
+        } else if ("".equals(password)) {
+            JOptionPane.showMessageDialog(this, "Please enter the password field!");
+        } else {
+            User user = findOneById(username);
+            if (user == null) {
+                JOptionPane.showMessageDialog(this, "Username is not exist!");
+            } else {
+                try {
+                    boolean isRightPassword = comparePassword(password, user.getPassword());
+                    if (isRightPassword) {
+                        this.setVisible(false);
 //
 
-        System.gc();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
+                        System.gc();
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                new Dashboard().setVisible(true);
+                            }
+                        });
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Password is not correct. Please try another password!");
+                    }
+                } catch (NoSuchAlgorithmException e) {
+                    JOptionPane.showMessageDialog(this, "Opps!" + e);
+
+                    System.out.println("Exception thrown for incorrect algorithm: " + e);
+                }
+
             }
-        });
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void inputUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUsernameActionPerformed
