@@ -249,9 +249,8 @@ public class Login extends javax.swing.JFrame {
         String password = inputPassword.getText();
         System.out.println("username: " + username + " password: " + password);
         this.setVisible(false);
-//        Runtime rt = Runtime.getRuntime();
-//        long usedMB = (rt.totalMemory() - rt.freeMemory()) / 1024 / 1024;
-//        System.out.println("usedMB: " + usedMB);
+//
+
         System.gc();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
