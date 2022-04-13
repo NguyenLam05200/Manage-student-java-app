@@ -4,31 +4,34 @@
  */
 package view;
 
-import static dao.UserDAO.findOneById;
-
+import static dao.UserDAO.changePassword;
 import entity.User;
 import java.security.NoSuchAlgorithmException;
-import java.util.Locale;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import util.handlePassword;
 import static util.handlePassword.comparePassword;
+import static util.handlePassword.hashPassword;
 
 /**
  *
  * @author holohoi
  */
-public class Login extends javax.swing.JFrame {
+public class FirstLogin extends javax.swing.JFrame {
+
+    User user;
 
     /**
      * Creates new form FrameDesignTest
      */
-    public Login() {
+    public FirstLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.getRootPane().setDefaultButton(jButton1);
+    }
 
+    public FirstLogin(User user) {
+        this.user = user;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("First login");
     }
 
     /**
@@ -41,6 +44,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -52,10 +56,10 @@ public class Login extends javax.swing.JFrame {
         Content = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        inputUsername = new javax.swing.JTextField();
+        inputNewPassword = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        inputPassword = new javax.swing.JPasswordField();
+        inputConfirmPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manage Classroom");
@@ -63,15 +67,27 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(240, 240, 242));
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("<html>This is the first time you login,<br/>please change your password.</html>");
+        jLabel4.setToolTipText("");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -136,7 +152,7 @@ public class Login extends javax.swing.JFrame {
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +166,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Login");
+        jButton1.setText("Change password");
         jButton1.setPreferredSize(new java.awt.Dimension(133, 34));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,10 +178,10 @@ public class Login extends javax.swing.JFrame {
         Footer.setLayout(FooterLayout);
         FooterLayout.setHorizontalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+            .addGroup(FooterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FooterLayout.setVerticalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,13 +201,13 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Username");
+        jLabel3.setText("New password");
 
-        inputUsername.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        inputUsername.setPreferredSize(new java.awt.Dimension(110, 20));
-        inputUsername.addActionListener(new java.awt.event.ActionListener() {
+        inputNewPassword.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputNewPassword.setPreferredSize(new java.awt.Dimension(110, 20));
+        inputNewPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputUsernameActionPerformed(evt);
+                inputNewPasswordActionPerformed(evt);
             }
         });
 
@@ -202,7 +218,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .addComponent(inputNewPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -212,7 +228,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addComponent(inputNewPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
         );
 
         Content.add(jPanel7);
@@ -221,10 +237,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Password");
+        jLabel2.setText("Confirm password");
 
-        inputPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        inputPassword.setPreferredSize(new java.awt.Dimension(110, 20));
+        inputConfirmPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        inputConfirmPassword.setPreferredSize(new java.awt.Dimension(110, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,7 +249,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .addComponent(inputConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -243,7 +259,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(inputConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -259,63 +275,48 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        String username = inputUsername.getText();
-        String password = inputPassword.getText();
+        String newPassword = inputNewPassword.getText();
+        String confirmPassword = inputConfirmPassword.getText();
 
-        if ("".equals(username)) {
+        if ("".equals(newPassword)) {
             JOptionPane.showMessageDialog(this, "Please fill in the username field!");
-        } else if ("".equals(password)) {
+        } else if ("".equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Please fill in the password field!");
+        } else if (!newPassword.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Password does not match!");
         } else {
-            User user = findOneById(username);
-            if (user == null) {
-                JOptionPane.showMessageDialog(this, "Username is not exist!");
-            } else {
-                try {
-                    boolean isRightPassword = comparePassword(password, user.getPassword());
-                    if (isRightPassword) {
-                        if (handlePassword.comparePassword(user.getId(), user.getPassword())) {
-                            if (user.getId() == null ? user.getUsername() == null : user.getId().equals(user.getUsername())) {
-                                this.setVisible(false);
+            try {
+                boolean isRightPassword = comparePassword(newPassword, user.getPassword());
+                if (isRightPassword) {
+                    JOptionPane.showMessageDialog(this, "Your new password is the same as your old password, please change another password!");
+                } else {
+                    user.setPassword(hashPassword(newPassword));
+                    changePassword(user);
+                    this.setVisible(false);
 
-                                System.gc();
-                                java.awt.EventQueue.invokeLater(new Runnable() {
-                                    public void run() {
-                                        new FirstLogin(user).setVisible(true);
-                                    }
-                                });
+                    System.gc();
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            if (user.getRole() == 0) {
+                                new TeacherDashboard().setVisible(true);
+                            } else if (user.getRole() == 1) {
+                                new StudentDashboard().setVisible(true);
                             }
-                        } else {
-                            this.setVisible(false);
-
-                            System.gc();
-                            java.awt.EventQueue.invokeLater(new Runnable() {
-                                public void run() {
-                                    if (user.getRole() == 0) {
-                                        new TeacherDashboard().setVisible(true);
-                                    } else if (user.getRole() == 1) {
-                                        new StudentDashboard().setVisible(true);
-                                    }
-                                }
-                            });
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Password is not correct. Please try another password!");
-                    }
-                } catch (NoSuchAlgorithmException e) {
-                    JOptionPane.showMessageDialog(this, "Opps! " + e);
-
-                    System.out.println("Exception thrown for incorrect algorithm: " + e);
+                    });
                 }
+            } catch (NoSuchAlgorithmException e) {
+                JOptionPane.showMessageDialog(this, "Opps! " + e);
 
+                System.out.println("Exception thrown for incorrect algorithm: " + e);
             }
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void inputUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUsernameActionPerformed
+    private void inputNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNewPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputUsernameActionPerformed
+    }//GEN-LAST:event_inputNewPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,21 +335,23 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new FirstLogin().setVisible(true);
             }
         });
     }
@@ -358,12 +361,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Footer;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel LoginForm;
-    private javax.swing.JPasswordField inputPassword;
-    private javax.swing.JTextField inputUsername;
+    private javax.swing.JPasswordField inputConfirmPassword;
+    private javax.swing.JTextField inputNewPassword;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

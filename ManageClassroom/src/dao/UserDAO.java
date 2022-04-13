@@ -9,10 +9,13 @@ package dao;
  * @author holohoi
  */
 import entity.User;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import util.HibernateUtil;
+import util.handlePassword;
 
 public class UserDAO {
 
@@ -48,13 +51,32 @@ public class UserDAO {
         }
     }
 
-    public static void main(String[] args) {
+    public static boolean changePassword(User user) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try {
+            session.update(user);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.out.println("Opps, " + e);
+            return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         User temp = findOneById("18120433");
+        boolean x = handlePassword.comparePassword("1812043", temp.getPassword());
+        System.out.println("Password current: " + x);
         if (temp == null) {
             System.out.println("Null");
         } else {
             System.out.println("ID: " + temp.getId());
+            System.out.println("User name: " + temp.getUsername());
+            System.out.println("password: " + temp.getPassword());
         }
+        temp.setPassword(handlePassword.hashPassword("18120433"));
+        changePassword(temp);
 //        System.out.println("user: " + temp == null);
     }
 }

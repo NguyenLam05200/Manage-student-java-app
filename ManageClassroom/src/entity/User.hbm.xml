@@ -22,7 +22,7 @@
         </property>
         <property name="role" type="integer">
             <column name="role" length="3" />
-            <!--<generator class="assigned" />-->
+            <!-- <generator class="assigned" />-->
         </property>
     </class>
 </hibernate-mapping>
