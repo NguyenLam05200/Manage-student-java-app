@@ -292,7 +292,7 @@ public class Login extends javax.swing.JFrame {
                             java.awt.EventQueue.invokeLater(new Runnable() {
                                 public void run() {
                                     if (user.getRole() == 0) {
-                                        new TeacherDashboard().setVisible(true);
+                                        new TeacherDashboard(user).setVisible(true);
                                     } else if (user.getRole() == 1) {
                                         new StudentDashboard().setVisible(true);
                                     }

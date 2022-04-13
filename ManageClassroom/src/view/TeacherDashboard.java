@@ -4,8 +4,7 @@
  */
 package view;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
+import entity.User;
 
 /**
  *
@@ -13,10 +12,26 @@ import java.awt.GraphicsEnvironment;
  */
 public class TeacherDashboard extends javax.swing.JFrame {
 
+    static User user;
+
     /**
      * Creates new form Dashboard
      */
     public TeacherDashboard() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Student");
+//        set full current screen while show this frame
+//        GraphicsEnvironment graphics
+//                = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//        GraphicsDevice device = graphics.getDefaultScreenDevice();
+//        device.setFullScreenWindow(this);
+
+    }
+
+    public TeacherDashboard(User user) {
+        TeacherDashboard.user = user;
+        usernameLabel.setText("\t" + user.getUsername());
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Student");
@@ -38,6 +53,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         Header = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        OptionSetting = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
         Navside = new javax.swing.JPanel();
         Content = new javax.swing.JPanel();
 
@@ -45,15 +67,104 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         Header.setBackground(new java.awt.Color(153, 153, 255));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/settingIcon.png"))); // NOI18N
+        jLabel1.setText(" Setting");
+        jLabel1.setMaximumSize(new java.awt.Dimension(160, 100));
+        jLabel1.setMinimumSize(new java.awt.Dimension(160, 100));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        OptionSetting.setBackground(new java.awt.Color(153, 153, 255));
+        OptionSetting.setLayout(new java.awt.GridLayout(2, 0, 0, 3));
+        OptionSetting.setVisible(false);
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Reset Password");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        OptionSetting.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Logout");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        OptionSetting.add(jPanel3);
+
+        usernameLabel.setFont(new java.awt.Font("Forte", 1, 24)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/classroom.png"))); // NOI18N
+        usernameLabel.setText("   User");
+
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addComponent(OptionSetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OptionSetting, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         Navside.setBackground(new java.awt.Color(204, 255, 204));
@@ -105,6 +216,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        System.out.println("hello");
+//        this.add(OptionSetting);
+        OptionSetting.setVisible(!OptionSetting.isVisible());
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -145,5 +263,12 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Content;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Navside;
+    private javax.swing.JPanel OptionSetting;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

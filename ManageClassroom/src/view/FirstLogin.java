@@ -291,19 +291,23 @@ public class FirstLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Your new password is the same as your old password, please change another password!");
                 } else {
                     user.setPassword(hashPassword(newPassword));
-                    changePassword(user);
-                    this.setVisible(false);
+                    boolean isChanged = changePassword(user);
+                    if (isChanged) {
+                        this.setVisible(false);
 
-                    System.gc();
-                    java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            if (user.getRole() == 0) {
-                                new TeacherDashboard().setVisible(true);
-                            } else if (user.getRole() == 1) {
-                                new StudentDashboard().setVisible(true);
+                        System.gc();
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                if (user.getRole() == 0) {
+                                    new TeacherDashboard(user).setVisible(true);
+                                } else if (user.getRole() == 1) {
+                                    new StudentDashboard().setVisible(true);
+                                }
                             }
-                        }
-                    });
+                        });
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Fail to update new password, please restart and login system again!");
+                    }
                 }
             } catch (NoSuchAlgorithmException e) {
                 JOptionPane.showMessageDialog(this, "Opps! " + e);
