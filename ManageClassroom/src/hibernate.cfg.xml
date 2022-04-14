@@ -14,6 +14,7 @@
         <property name="hibernate.transaction.auto_close_session">true</property>
 
         <!--<mapping resource="entity/Khachhang.hbm.xml"/>-->        
-        <mapping resource="entity/User.hbm.xml"/>
+        <mapping resource="entity/User.hbm.xml"/>        
+        <mapping resource="entity/Course.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
