@@ -4,7 +4,11 @@
  */
 package view;
 
+import dao.CourseDAO;
+import entity.Course;
 import entity.User;
+import java.awt.Component;
+import java.util.List;
 
 /**
  *
@@ -20,7 +24,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
     public TeacherDashboard() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("Student");
+        this.setTitle("Teacher");
 //        set full current screen while show this frame
 //        GraphicsEnvironment graphics
 //                = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -32,8 +36,9 @@ public class TeacherDashboard extends javax.swing.JFrame {
     public TeacherDashboard(User user) {
 
         initComponents();
+        myInit(user);
         this.setLocationRelativeTo(null);
-        this.setTitle("Student");
+        this.setTitle("Teacher");
         TeacherDashboard.user = user;
         String textUsername = "   " + user.getName();
         usernameLabel.setText(textUsername);
@@ -155,7 +160,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         OptionSetting.add(jPanel3);
 
-        usernameLabel.setFont(new java.awt.Font("Forte", 1, 24)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Arial", 3, 22)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(0, 0, 0));
         usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/classroom.png"))); // NOI18N
         usernameLabel.setText("   User");
@@ -189,6 +194,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(159, 240, 159));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setName("CreateNewCourse"); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -216,6 +222,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(159, 240, 159));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel5.setName("Courses"); // NOI18N
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -281,6 +288,46 @@ public class TeacherDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void myInit(User user) {
+        List<Course> listCourse = CourseDAO.getCoursesByCreator(user);
+        if (listCourse != null) {
+            for (Course course : listCourse) {
+                javax.swing.JPanel panelCourse = new javax.swing.JPanel();
+                panelCourse.setBackground(new java.awt.Color(255, 204, 153));
+                panelCourse.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+                panelCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                panelCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jPanel5MouseClicked(evt);
+                    }
+                });
+                javax.swing.JLabel lableCourse = new javax.swing.JLabel();
+
+                lableCourse.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+                lableCourse.setForeground(new java.awt.Color(51, 51, 51));
+                lableCourse.setText(course.getName());
+
+                javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelCourse);
+                panelCourse.setLayout(jPanel5Layout);
+                jPanel5Layout.setHorizontalGroup(
+                        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(lableCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                        .addContainerGap())
+                );
+                jPanel5Layout.setVerticalGroup(
+                        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(lableCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addContainerGap())
+                );
+                panelCourse.setVisible(false);
+                Navside.add(panelCourse);
+            }
+        }
+    }
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         OptionSetting.setVisible(!OptionSetting.isVisible());
@@ -313,40 +360,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
 
         // TODO add your handling code here:
-        System.out.println("Here");
-        javax.swing.JPanel panelCourse = new javax.swing.JPanel();
-        panelCourse.setBackground(new java.awt.Color(159, 240, 159));
-        panelCourse.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelCourse.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
+        int amountCom = Navside.getComponentCount();
+        Component[] components = Navside.getComponents();
+        for (Component c : components) {
+            if (!"CreateNewCourse".equals(c.getName()) && !"Courses".equals(c.getName())) {
+                c.setVisible(!c.isVisible());
             }
-        });
-        javax.swing.JLabel lableCourse = new javax.swing.JLabel();
-
-        lableCourse.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lableCourse.setForeground(new java.awt.Color(51, 51, 51));
-        lableCourse.setText("Course 01");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelCourse);
-        panelCourse.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lableCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lableCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
-
-        Navside.add(panelCourse);
+        }
     }//GEN-LAST:event_jPanel5MouseClicked
 
     /**

@@ -294,7 +294,7 @@ public class Login extends javax.swing.JFrame {
                                     if (user.getRole() == 0) {
                                         new TeacherDashboard(user).setVisible(true);
                                     } else if (user.getRole() == 1) {
-                                        new StudentDashboard().setVisible(true);
+                                        new StudentDashboard(user).setVisible(true);
                                     }
                                 }
                             });
