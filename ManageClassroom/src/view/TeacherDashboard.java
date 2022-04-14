@@ -30,11 +30,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
     }
 
     public TeacherDashboard(User user) {
-        TeacherDashboard.user = user;
-        usernameLabel.setText("\t" + user.getUsername());
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Student");
+        TeacherDashboard.user = user;
+        String textUsername = "   " + user.getName();
+        usernameLabel.setText(textUsername);
 //        set full current screen while show this frame
 //        GraphicsEnvironment graphics
 //                = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -86,6 +88,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,6 +120,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -218,10 +230,32 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        System.out.println("hello");
-//        this.add(OptionSetting);
         OptionSetting.setVisible(!OptionSetting.isVisible());
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+
+        System.gc();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ResetPassword(user).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+
+        System.gc();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -65,17 +65,17 @@ public class UserDAO {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        User temp = findOneById("18120433");
-        boolean x = handlePassword.comparePassword("1812043", temp.getPassword());
-        System.out.println("Password current: " + x);
-        if (temp == null) {
-            System.out.println("Null");
-        } else {
-            System.out.println("ID: " + temp.getId());
-            System.out.println("User name: " + temp.getUsername());
-            System.out.println("password: " + temp.getPassword());
-        }
-        temp.setPassword(handlePassword.hashPassword("18120433"));
+        User temp = findOneById("GV0001");
+//        boolean x = handlePassword.comparePassword("1812043", temp.getPassword());
+//        System.out.println("Password current: " + x);
+//        if (temp == null) {
+//            System.out.println("Null");
+//        } else {
+//            System.out.println("ID: " + temp.getId());
+//            System.out.println("User name: " + temp.getUsername());
+//            System.out.println("password: " + temp.getPassword());
+//        }
+        temp.setPassword(handlePassword.hashPassword("1"));
         changePassword(temp);
 //        System.out.println("user: " + temp == null);
     }
