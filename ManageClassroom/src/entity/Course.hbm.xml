@@ -17,5 +17,23 @@
         <many-to-one name="createBy" class="entity.User" >
             <column name="createBy" />
         </many-to-one>
+        <property name="dayStart" type="timestamp">
+            <column name="dayStart" />
+        </property>
+        <property name="dayFinish" type="timestamp">
+            <column name="dayFinish" />
+        </property>
+        <property name="timeStart" type="timestamp">
+            <column name="timeStart" />
+        </property>
+        <property name="timeFinish" type="timestamp">
+            <column name="timeFinish" />
+        </property>
+        <property name="weekday" type="int">
+            <column name="weekday" />
+        </property>
+        <property name="roomName" type="string">
+            <column name="roomName" />
+        </property>
     </class>
 </hibernate-mapping>

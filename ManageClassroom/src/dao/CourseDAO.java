@@ -12,6 +12,7 @@ import entity.Course;
 import entity.User;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -69,6 +70,19 @@ public class CourseDAO {
         }
     }
 
+    public static boolean addCourse(Course course) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try {
+            session.save(course);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.out.println("Opps, " + e);
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws NoSuchAlgorithmException {
 //        Course temp = null;
 //        SessionFactory ssFac = HibernateUtil.getSessionFactory();
@@ -81,17 +95,26 @@ public class CourseDAO {
 //        } finally {
 //            ss.close();
 //        }
+//        User user = UserDAO.findOneById("GV0001");
+//        List<Course> temp = getCoursesByCreator(user);
+//        if (temp == null) {
+//            System.out.println("null");
+//        } else {
+//            if (temp.isEmpty()) {
+//                System.out.println("empty");
+//            } else {
+//                System.out.println("" + temp.size());
+//            }
+//        }
         User user = UserDAO.findOneById("GV0001");
-        List<Course> temp = getCoursesByCreator(user);
-        if (temp == null) {
-            System.out.println("null");
-        } else {
-            if (temp.isEmpty()) {
-                System.out.println("empty");
-            } else {
-                System.out.println("" + temp.size());
-            }
-        }
+        Course course = new Course();
+        course.setId("MH001");
+        course.setName("Lập trình ứng dụng Java");
+        course.setRoomName("G101");
+        course.setWeekday(4);
+        course.setCreateBy(user);
+        addCourse(course);
+        System.out.println("Username: " + user.getName());
         System.out.println("Hello");
     }
 }

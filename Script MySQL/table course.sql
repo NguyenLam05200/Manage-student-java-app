@@ -27,6 +27,12 @@ CREATE TABLE `courses` (
   `name` varchar(255) NOT NULL,
   `createAt` timestamp DEFAULT (CURRENT_TIMESTAMP),
   `createBy` varchar(15) NOT NULL,
+  `dayStart` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `dayFinish` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `weekday` int(1) unsigned NOT NULL DEFAULT 2 CHECK (weekday > 1 AND weekday < 9),
+  `timeStart` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `timeFinish` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `roomName` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   FOREIGN KEY (`createBy`) REFERENCES users(`id`)
