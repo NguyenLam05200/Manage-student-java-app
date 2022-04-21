@@ -592,11 +592,11 @@ public class StudentDashboard extends javax.swing.JFrame {
         idLabel.setText("Student ID: " + user.getId());
         //String gender = user.get
         String role = user.getRole() == 0 ? "Teacher" : "Student";
-//        if (user.getGender() == 0) {
-//            jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/studentMale.png"))); // NOI18N
-//        } else {
-//            jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/studentFemale.png"))); // NOI18N
-//        }
+        if (user.getGender()) {
+            jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/studentMale.png"))); // NOI18N
+        } else {
+            jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/studentFemale.png"))); // NOI18N
+        }
         roleLabel.setText(": " + role);
         emailLabel.setText(": " + user.getEmail());
 

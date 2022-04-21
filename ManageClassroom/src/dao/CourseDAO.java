@@ -26,6 +26,8 @@ public class CourseDAO {
         String hql = "from Course";
         Query query = session.createQuery(hql);
         listCourse = query.list();
+        session.getTransaction().commit();
+
         return listCourse;
     }
 
@@ -78,6 +80,7 @@ public class CourseDAO {
             session.getTransaction().commit();
         } catch (HibernateException e) {
             System.out.println("Opps, " + e);
+            session.getTransaction().commit();
             return false;
         }
         return true;

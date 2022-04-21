@@ -17,12 +17,27 @@ public class Course implements java.io.Serializable {
     private Timestamp createAt;
     private User createBy;
     private Timestamp dayStart;
-
     private Timestamp dayFinish;
     private Timestamp timeStart;
     private Timestamp timeFinish;
     private int weekday;
     private String roomName;
+
+    public Course(String id, String name, User createBy, Timestamp dayStart, Timestamp dayFinish, Timestamp timeStart, Timestamp timeFinish, int weekday, String roomName) {
+        this.id = id;
+        this.name = name;
+        this.createBy = createBy;
+        this.dayStart = dayStart;
+        this.dayFinish = dayFinish;
+        this.timeStart = timeStart;
+        this.timeFinish = timeFinish;
+        this.weekday = weekday;
+        this.roomName = roomName;
+
+        Long datetime = System.currentTimeMillis();
+        Timestamp timeCur = new Timestamp(datetime);
+        this.createAt = timeCur;
+    }
 
     public Timestamp getDayStart() {
         return dayStart;

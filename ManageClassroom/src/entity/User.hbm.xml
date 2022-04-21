@@ -22,10 +22,9 @@
         </property>
         <property name="role" type="integer">
             <column name="role" length="3" />
-            <!-- <generator class="assigned" />-->
         </property>
         <property name="gender" type="boolean">
-            <column name="gender" length="1" />
+            <column name="gender" length="1"/>
         </property>
     </class>
 </hibernate-mapping>

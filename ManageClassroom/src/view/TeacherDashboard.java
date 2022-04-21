@@ -8,8 +8,15 @@ import dao.CourseDAO;
 import entity.Course;
 import entity.User;
 import java.awt.Component;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -808,6 +815,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Create new Course");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -1367,6 +1379,59 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private void inputMonthStartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_inputMonthStartItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_inputMonthStartItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Hello");
+        String id = inputTextID.getText();
+        String name = inputTextName.getText();
+        String roomName = inputTextRoom.getText();
+        int weekday = inputWeekday.getSelectedIndex() + 2;
+
+        String dateStart = inputDayStart.getSelectedIndex() + 1 + "-"
+                + (inputMonthStart.getSelectedIndex() + 1) + "-"
+                + inputYearStart.getSelectedItem().toString().split(" ")[1];
+        String timeStart = inputHourStart.getSelectedItem().toString().split(" ")[0]
+                + "-" + inputMinuteStart.getSelectedItem().toString().split(" ")[0];
+        String dateEnd = inputDayEnd.getSelectedIndex() + 1 + "-"
+                + (inputMonthEnd.getSelectedIndex() + 1) + "-"
+                + inputYearEnd.getSelectedItem().toString().split(" ")[1];
+        String timeEnd = inputHourEnd.getSelectedItem().toString().split(" ")[0]
+                + "-" + inputMinuteEnd.getSelectedItem().toString().split(" ")[0];
+        Course inputNewCourse = new Course(id,
+                name,
+                user,
+                convertDate(dateStart, true),
+                convertDate(dateEnd, true),
+                convertDate(timeStart, false),
+                convertDate(timeEnd, false),
+                weekday, roomName);
+        System.out.println("Input: " + inputNewCourse.toString());
+        boolean isAdd = CourseDAO.addCourse(inputNewCourse);
+        if (isAdd) {
+            JOptionPane.showMessageDialog(this, "Add success!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Add Fail!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private Timestamp convertDate(String inDate, boolean isDate) {
+        String format = "";
+        if (isDate) {
+            format = "dd-MM-yyyy";
+        } else {
+            format = "HH-mm";
+        }
+        DateFormat df = new SimpleDateFormat(format);
+        Timestamp ts = null;
+        try {
+            ts = new Timestamp(((java.util.Date) df.parse(inDate)).getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(TeacherDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ts;
+    }
 
     void setVisibleContentMain(String namePanel) {
         Component[] comps = Content.getComponents();
