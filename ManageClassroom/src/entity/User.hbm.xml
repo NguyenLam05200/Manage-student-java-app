@@ -24,5 +24,8 @@
             <column name="role" length="3" />
             <!-- <generator class="assigned" />-->
         </property>
+        <property name="gender" type="boolean">
+            <column name="gender" length="1" />
+        </property>
     </class>
 </hibernate-mapping>

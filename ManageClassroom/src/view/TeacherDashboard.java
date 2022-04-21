@@ -8,13 +8,8 @@ import dao.CourseDAO;
 import entity.Course;
 import entity.User;
 import java.awt.Component;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -83,6 +78,45 @@ public class TeacherDashboard extends javax.swing.JFrame {
         Content = new javax.swing.JPanel();
         panelCourses = new javax.swing.JPanel();
         panelCreateNewCourse = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        inputTextID = new javax.swing.JTextField();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        inputTextName = new javax.swing.JTextField();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        inputTextRoom = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        inputDayStart = new javax.swing.JComboBox<>();
+        inputMonthStart = new javax.swing.JComboBox<>();
+        inputYearStart = new javax.swing.JComboBox<>();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        inputDayEnd = new javax.swing.JComboBox<>();
+        inputMonthEnd = new javax.swing.JComboBox<>();
+        inputYearEnd = new javax.swing.JComboBox<>();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        inputWeekday = new javax.swing.JComboBox<>();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        inputHourStart = new javax.swing.JComboBox<>();
+        inputMinuteStart = new javax.swing.JComboBox<>();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        inputHourEnd = new javax.swing.JComboBox<>();
+        inputMinuteEnd = new javax.swing.JComboBox<>();
+        jPanel24 = new javax.swing.JPanel();
+        jPanel25 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         panelProfile = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -320,28 +354,522 @@ public class TeacherDashboard extends javax.swing.JFrame {
         panelCourses.setLayout(panelCoursesLayout);
         panelCoursesLayout.setHorizontalGroup(
             panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGap(0, 844, Short.MAX_VALUE)
         );
         panelCoursesLayout.setVerticalGroup(
             panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 455, Short.MAX_VALUE)
         );
 
-        panelCreateNewCourse.setBackground(new java.awt.Color(204, 255, 204));
+        panelCreateNewCourse.setBackground(new java.awt.Color(153, 204, 255));
         panelCreateNewCourse.setName("panelCreateNewCourse"); // NOI18N
+
+        jPanel10.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jPanel11.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel11.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel13.setBackground(new java.awt.Color(153, 204, 255));
+
+        jPanel14.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel14.setLayout(new java.awt.GridLayout(5, 0, 0, 5));
+
+        jPanel17.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("ID");
+        jLabel12.setPreferredSize(new java.awt.Dimension(63, 46));
+
+        inputTextID.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        inputTextID.setText("LTJ001");
+        inputTextID.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        inputTextID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTextIDActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputTextID, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputTextID)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel14.add(jPanel17);
+
+        jPanel19.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Name");
+        jLabel15.setPreferredSize(new java.awt.Dimension(63, 46));
+
+        inputTextName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        inputTextName.setText("Lập trình ứng dụng JAVA");
+        inputTextName.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        inputTextName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTextNameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputTextName, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputTextName)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel14.add(jPanel19);
+
+        jPanel20.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Room");
+        jLabel16.setPreferredSize(new java.awt.Dimension(63, 46));
+
+        inputTextRoom.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        inputTextRoom.setText("G202");
+        inputTextRoom.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        inputTextRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTextRoomActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputTextRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputTextRoom)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel14.add(jPanel20);
+
+        jPanel18.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("<html>Starting<br/>day</html>");
+
+        inputDayStart.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31" }));
+        inputDayStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDayStartActionPerformed(evt);
+            }
+        });
+
+        inputMonthStart.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputMonthStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        inputMonthStart.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                inputMonthStartItemStateChanged(evt);
+            }
+        });
+        inputMonthStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMonthStartActionPerformed(evt);
+            }
+        });
+
+        inputYearStart.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputYearStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024", "Năm 2025", "Năm 2026", "Năm 2027", "Năm 2028", "Năm 2029", "Năm 2030", "Năm 2031", "Năm 2032", "Năm 2033", "Năm 2034", "Năm 2035", "Năm 2036", "Năm 2037", "Năm 2038", "Năm 2039", "Năm 2040", "Năm 2041", "Năm 2042", "Năm 2043", "Năm 2044", "Năm 2045", "Năm 2046", "Năm 2047", "Năm 2048", "Năm 2049", "Năm 2050" }));
+        inputYearStart.setSelectedIndex(2);
+        inputYearStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputYearStartActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
+
+        jPanel14.add(jPanel18);
+
+        jPanel21.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("<html>Finishing<br/>day</html>");
+
+        inputDayEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31" }));
+        inputDayEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDayEndActionPerformed(evt);
+            }
+        });
+
+        inputMonthEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        inputMonthEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMonthEndActionPerformed(evt);
+            }
+        });
+
+        inputYearEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputYearEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024", "Năm 2025", "Năm 2026", "Năm 2027", "Năm 2028", "Năm 2029", "Năm 2030", "Năm 2031", "Năm 2032", "Năm 2033", "Năm 2034", "Năm 2035", "Năm 2036", "Năm 2037", "Năm 2038", "Năm 2039", "Năm 2040", "Năm 2041", "Năm 2042", "Năm 2043", "Năm 2044", "Năm 2045", "Năm 2046", "Năm 2047", "Năm 2048", "Năm 2049", "Năm 2050" }));
+        inputYearEnd.setSelectedIndex(2);
+        inputYearEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputYearEndActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
+
+        jPanel14.add(jPanel21);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel11.add(jPanel13);
+
+        jPanel12.setBackground(new java.awt.Color(153, 204, 255));
+
+        jPanel15.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(255, 102, 102)));
+        jPanel15.setLayout(new java.awt.GridLayout(5, 0, 0, 5));
+
+        jPanel16.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("   Weekday");
+
+        inputWeekday.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputWeekday.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật" }));
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputWeekday, 0, 230, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(inputWeekday, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel15.add(jPanel16);
+
+        jPanel22.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("   Time begin");
+
+        inputHourStart.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputHourStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 giờ", "1 giờ", "2 giờ", "3 giờ", "4 giờ", "5 giờ", "6 giờ", "7 giờ", "8 giờ", "9 giờ", "10 giờ", "11 giờ", "12 giờ", "13 giờ", "14 giờ", "15 giờ", "16 giờ", "17 giờ", "18 giờ", "19 giờ", "20 giờ", "21 giờ", "22 giờ", "23 giờ" }));
+        inputHourStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputHourStartActionPerformed(evt);
+            }
+        });
+
+        inputMinuteStart.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputMinuteStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 phút", "1 phút", "2 phút", "3 phút", "4 phút", "5 phút", "6 phút", "7 phút", "8 phút", "9 phút", "10 phút", "11 phút", "12 phút", "13 phút", "14 phút", "15 phút", "16 phút", "17 phút", "18 phút", "19 phút", "20 phút", "21 phút", "22 phút", "23 phút", "24 phút", "25 phút", "26 phút", "27 phút", "28 phút", "29 phút", "30 phút", "31 phút", "32 phút", "33 phút", "34 phút", "35 phút", "36 phút", "37 phút", "38 phút", "39 phút", "40 phút", "41 phút", "42 phút", "43 phút", "44 phút", "45 phút", "46 phút", "47 phút", "48 phút", "49 phút", "50 phút", "51 phút", "52 phút", "53 phút", "54 phút", "55 phút", "56 phút", "57 phút", "58 phút", "59 phút" }));
+        inputMinuteStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMinuteStartActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputHourStart, 0, 93, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(inputMinuteStart, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(inputHourStart, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMinuteStart, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel15.add(jPanel22);
+
+        jPanel23.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("   Time end");
+
+        inputHourEnd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputHourEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 giờ", "1 giờ", "2 giờ", "3 giờ", "4 giờ", "5 giờ", "6 giờ", "7 giờ", "8 giờ", "9 giờ", "10 giờ", "11 giờ", "12 giờ", "13 giờ", "14 giờ", "15 giờ", "16 giờ", "17 giờ", "18 giờ", "19 giờ", "20 giờ", "21 giờ", "22 giờ", "23 giờ" }));
+        inputHourEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputHourEndActionPerformed(evt);
+            }
+        });
+
+        inputMinuteEnd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputMinuteEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 phút", "1 phút", "2 phút", "3 phút", "4 phút", "5 phút", "6 phút", "7 phút", "8 phút", "9 phút", "10 phút", "11 phút", "12 phút", "13 phút", "14 phút", "15 phút", "16 phút", "17 phút", "18 phút", "19 phút", "20 phút", "21 phút", "22 phút", "23 phút", "24 phút", "25 phút", "26 phút", "27 phút", "28 phút", "29 phút", "30 phút", "31 phút", "32 phút", "33 phút", "34 phút", "35 phút", "36 phút", "37 phút", "38 phút", "39 phút", "40 phút", "41 phút", "42 phút", "43 phút", "44 phút", "45 phút", "46 phút", "47 phút", "48 phút", "49 phút", "50 phút", "51 phút", "52 phút", "53 phút", "54 phút", "55 phút", "56 phút", "57 phút", "58 phút", "59 phút" }));
+        inputMinuteEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMinuteEndActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputHourEnd, 0, 93, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(inputMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(inputHourEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel15.add(jPanel23);
+
+        jPanel24.setBackground(new java.awt.Color(153, 204, 255));
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 397, Short.MAX_VALUE)
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 89, Short.MAX_VALUE)
+        );
+
+        jPanel15.add(jPanel24);
+
+        jPanel25.setBackground(new java.awt.Color(153, 204, 255));
+
+        jButton1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Create new Course");
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel15.add(jPanel25);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel11.add(jPanel12);
 
         javax.swing.GroupLayout panelCreateNewCourseLayout = new javax.swing.GroupLayout(panelCreateNewCourse);
         panelCreateNewCourse.setLayout(panelCreateNewCourseLayout);
         panelCreateNewCourseLayout.setHorizontalGroup(
             panelCreateNewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCreateNewCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCreateNewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelCreateNewCourseLayout.setVerticalGroup(
             panelCreateNewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGroup(panelCreateNewCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelProfile.setBackground(new java.awt.Color(255, 204, 153));
+        panelProfile.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 102, 0), 10)));
         panelProfile.setName("panelProfile"); // NOI18N
         panelProfile.setLayout(new java.awt.GridLayout(0, 2));
 
@@ -378,7 +906,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(fullnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -389,6 +917,8 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jLabel7.getAccessibleContext().setAccessibleDescription("");
 
         panelProfile.add(jPanel1);
+
+        jPanel7.setBackground(new java.awt.Color(204, 204, 255));
 
         jPanel9.setBackground(new java.awt.Color(153, 153, 0));
 
@@ -404,21 +934,27 @@ public class TeacherDashboard extends javax.swing.JFrame {
         );
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 51));
         jLabel10.setText("Gender");
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 51));
         jLabel11.setText("Role");
 
         sexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        sexLabel.setForeground(new java.awt.Color(0, 51, 51));
         sexLabel.setText(": Male");
 
         roleLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        roleLabel.setForeground(new java.awt.Color(0, 51, 51));
         roleLabel.setText(": Teacher");
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 51, 51));
         jLabel14.setText("Email");
 
         emailLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(0, 51, 51));
         emailLabel.setText(": nva@gmail.com");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -442,7 +978,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
+                        .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -464,7 +1000,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         panelProfile.add(jPanel7);
@@ -475,11 +1011,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGap(0, 844, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 455, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout ContentLayout = new javax.swing.GroupLayout(Content);
@@ -496,7 +1032,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         );
         ContentLayout.setVerticalGroup(
             ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCreateNewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,6 +1173,201 @@ public class TeacherDashboard extends javax.swing.JFrame {
         setVisibleContentMain("panelCreateNewCourse");
     }//GEN-LAST:event_jPanel4MouseClicked
 
+    private void inputTextIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTextIDActionPerformed
+
+    private void inputDayStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDayStartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDayStartActionPerformed
+
+    private void inputMonthStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthStartActionPerformed
+        // TODO add your handling code here:
+
+        int index = inputMonthStart.getSelectedIndex();
+        Integer thang31[] = {1, 3, 5, 7, 8, 10, 12};
+        Integer thang30[] = {4, 6, 9, 11};
+
+        boolean is31
+                = Arrays.asList(thang31)
+                        .contains(index + 1);
+        boolean is30
+                = Arrays.asList(thang30)
+                        .contains(index + 1);
+        if (is31) {
+            inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31"}));
+        } else if (is30) {
+            inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30"}));
+        } else {
+            String[] temp = inputYearStart.getSelectedItem().toString().split(" ");
+            int year = Integer.parseInt(temp[1]);
+            boolean isLeap = false;
+            if (year % 4 == 0)//chia hết cho 4 là năm nhuận
+            {
+                if (year % 100 == 0) //nếu vừa chia hết cho 4 mà vừa chia hết cho 100 thì không phải năm nhuận
+                {
+                    if (year % 400 == 0)//chia hết cho 400 là năm nhuận
+                    {
+                        isLeap = true;
+                    } else {
+                        isLeap = false;//không chia hết cho 400 thì không phải năm nhuận
+                    }
+                } else//chia hết cho 4 nhưng không chia hết cho 100 là năm nhuận
+                {
+                    isLeap = true;
+                }
+            } else {
+                isLeap = false;
+            }
+            if (isLeap) {
+                inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+            } else {
+                inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+            }
+        }
+    }//GEN-LAST:event_inputMonthStartActionPerformed
+
+    private void inputYearStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputYearStartActionPerformed
+        // TODO add your handling code here:
+        int index = inputMonthStart.getSelectedIndex();
+        if (index + 1 == 2) {
+            String[] temp = inputYearStart.getSelectedItem().toString().split(" ");
+            int year = Integer.parseInt(temp[1]);
+            boolean isLeap = false;
+            if (year % 4 == 0)//chia hết cho 4 là năm nhuận
+            {
+                if (year % 100 == 0) //nếu vừa chia hết cho 4 mà vừa chia hết cho 100 thì không phải năm nhuận
+                {
+                    if (year % 400 == 0)//chia hết cho 400 là năm nhuận
+                    {
+                        isLeap = true;
+                    } else {
+                        isLeap = false;//không chia hết cho 400 thì không phải năm nhuận
+                    }
+                } else//chia hết cho 4 nhưng không chia hết cho 100 là năm nhuận
+                {
+                    isLeap = true;
+                }
+            } else {
+                isLeap = false;
+            }
+            if (isLeap) {
+                inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+            } else {
+                inputDayStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+            }
+        }
+    }//GEN-LAST:event_inputYearStartActionPerformed
+
+    private void inputTextNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTextNameActionPerformed
+
+    private void inputTextRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextRoomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTextRoomActionPerformed
+
+    private void inputDayEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDayEndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDayEndActionPerformed
+
+    private void inputMonthEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthEndActionPerformed
+        // TODO add your handling code here:
+        int index = inputMonthEnd.getSelectedIndex();
+        Integer thang31[] = {1, 3, 5, 7, 8, 10, 12};
+        Integer thang30[] = {4, 6, 9, 11};
+
+        boolean is31
+                = Arrays.asList(thang31)
+                        .contains(index + 1);
+        boolean is30
+                = Arrays.asList(thang30)
+                        .contains(index + 1);
+        if (is31) {
+            inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31"}));
+        } else if (is30) {
+            inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30"}));
+        } else {
+            String[] temp = inputYearEnd.getSelectedItem().toString().split(" ");
+            int year = Integer.parseInt(temp[1]);
+            boolean isLeap = false;
+            if (year % 4 == 0)//chia hết cho 4 là năm nhuận
+            {
+                if (year % 100 == 0) //nếu vừa chia hết cho 4 mà vừa chia hết cho 100 thì không phải năm nhuận
+                {
+                    if (year % 400 == 0)//chia hết cho 400 là năm nhuận
+                    {
+                        isLeap = true;
+                    } else {
+                        isLeap = false;//không chia hết cho 400 thì không phải năm nhuận
+                    }
+                } else//chia hết cho 4 nhưng không chia hết cho 100 là năm nhuận
+                {
+                    isLeap = true;
+                }
+            } else {
+                isLeap = false;
+            }
+            if (isLeap) {
+                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+            } else {
+                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+            }
+        }
+    }//GEN-LAST:event_inputMonthEndActionPerformed
+
+    private void inputYearEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputYearEndActionPerformed
+        // TODO add your handling code here:
+        int index = inputMonthEnd.getSelectedIndex();
+        if (index + 1 == 2) {
+            String[] temp = inputYearEnd.getSelectedItem().toString().split(" ");
+            int year = Integer.parseInt(temp[1]);
+            boolean isLeap = false;
+            if (year % 4 == 0)//chia hết cho 4 là năm nhuận
+            {
+                if (year % 100 == 0) //nếu vừa chia hết cho 4 mà vừa chia hết cho 100 thì không phải năm nhuận
+                {
+                    if (year % 400 == 0)//chia hết cho 400 là năm nhuận
+                    {
+                        isLeap = true;
+                    } else {
+                        isLeap = false;//không chia hết cho 400 thì không phải năm nhuận
+                    }
+                } else//chia hết cho 4 nhưng không chia hết cho 100 là năm nhuận
+                {
+                    isLeap = true;
+                }
+            } else {
+                isLeap = false;
+            }
+            if (isLeap) {
+                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+            } else {
+                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+            }
+        }
+    }//GEN-LAST:event_inputYearEndActionPerformed
+
+    private void inputHourStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHourStartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputHourStartActionPerformed
+
+    private void inputMinuteStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinuteStartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMinuteStartActionPerformed
+
+    private void inputHourEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHourEndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputHourEndActionPerformed
+
+    private void inputMinuteEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinuteEndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMinuteEndActionPerformed
+
+    private void inputMonthStartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_inputMonthStartItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMonthStartItemStateChanged
+
     void setVisibleContentMain(String namePanel) {
         Component[] comps = Content.getComponents();
         for (Component c : comps) {
@@ -692,18 +1423,57 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel fullnameLabel;
     private javax.swing.JLabel idLabel;
+    private javax.swing.JComboBox<String> inputDayEnd;
+    private javax.swing.JComboBox<String> inputDayStart;
+    private javax.swing.JComboBox<String> inputHourEnd;
+    private javax.swing.JComboBox<String> inputHourStart;
+    private javax.swing.JComboBox<String> inputMinuteEnd;
+    private javax.swing.JComboBox<String> inputMinuteStart;
+    private javax.swing.JComboBox<String> inputMonthEnd;
+    private javax.swing.JComboBox<String> inputMonthStart;
+    private javax.swing.JTextField inputTextID;
+    private javax.swing.JTextField inputTextName;
+    private javax.swing.JTextField inputTextRoom;
+    private javax.swing.JComboBox<String> inputWeekday;
+    private javax.swing.JComboBox<String> inputYearEnd;
+    private javax.swing.JComboBox<String> inputYearStart;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

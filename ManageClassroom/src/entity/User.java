@@ -16,6 +16,7 @@ public class User implements java.io.Serializable {
     private String name;
     private String email;
     private int role;
+    private boolean gender;
 
     //Các phương thức khởi tạo, get, set.
     public User() {
@@ -25,15 +26,25 @@ public class User implements java.io.Serializable {
         this.name = "";
         this.email = "";
         this.role = 1;
+        this.gender = false;
     }
 
-    public User(String id, String username, String password, String name, String email, int role) {
+    public User(String id, String username, String password, String name, String email, int role, boolean isMale) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
         this.role = role;
+        this.gender = isMale;
+    }
+
+    public boolean isMale() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     public String getId() {

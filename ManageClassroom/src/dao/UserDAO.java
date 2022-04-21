@@ -65,7 +65,7 @@ public class UserDAO {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        User temp = findOneById("GV0002");
+        User temp = findOneById("18120433");
 //        boolean x = handlePassword.comparePassword("1812043", temp.getPassword());
 //        System.out.println("Password current: " + x);
 //        if (temp == null) {
