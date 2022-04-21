@@ -17,16 +17,16 @@
         <many-to-one name="createBy" class="entity.User" >
             <column name="createBy" />
         </many-to-one>
-        <property name="dayStart" type="timestamp">
+        <property name="dayStart" type="date">
             <column name="dayStart" />
         </property>
-        <property name="dayFinish" type="timestamp">
+        <property name="dayFinish" type="date">
             <column name="dayFinish" />
         </property>
-        <property name="timeStart" type="timestamp">
+        <property name="timeStart" type="time">
             <column name="timeStart" />
         </property>
-        <property name="timeFinish" type="timestamp">
+        <property name="timeFinish" type="time">
             <column name="timeFinish" />
         </property>
         <property name="weekday" type="int">

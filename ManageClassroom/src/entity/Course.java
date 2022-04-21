@@ -4,6 +4,8 @@
  */
 package entity;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
@@ -16,76 +18,9 @@ public class Course implements java.io.Serializable {
     private String name;
     private Timestamp createAt;
     private User createBy;
-    private Timestamp dayStart;
-    private Timestamp dayFinish;
-    private Timestamp timeStart;
-    private Timestamp timeFinish;
-    private int weekday;
-    private String roomName;
-
-    public Course(String id, String name, User createBy, Timestamp dayStart, Timestamp dayFinish, Timestamp timeStart, Timestamp timeFinish, int weekday, String roomName) {
-        this.id = id;
-        this.name = name;
-        this.createBy = createBy;
-        this.dayStart = dayStart;
-        this.dayFinish = dayFinish;
-        this.timeStart = timeStart;
-        this.timeFinish = timeFinish;
-        this.weekday = weekday;
-        this.roomName = roomName;
-
-        Long datetime = System.currentTimeMillis();
-        Timestamp timeCur = new Timestamp(datetime);
-        this.createAt = timeCur;
-    }
-
-    public Timestamp getDayStart() {
-        return dayStart;
-    }
-
-    public void setDayStart(Timestamp dayStart) {
-        this.dayStart = dayStart;
-    }
-
-    public Timestamp getDayFinish() {
-        return dayFinish;
-    }
-
-    public void setDayFinish(Timestamp dayFinish) {
-        this.dayFinish = dayFinish;
-    }
-
-    public Timestamp getTimeStart() {
-        return timeStart;
-    }
-
-    public void setTimeStart(Timestamp timeStart) {
-        this.timeStart = timeStart;
-    }
-
-    public Timestamp getTimeFinish() {
-        return timeFinish;
-    }
-
-    public void setTimeFinish(Timestamp timeFinish) {
-        this.timeFinish = timeFinish;
-    }
-
-    public int getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(int weekday) {
-        this.weekday = weekday;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
+    private Date dayStart;
+    private Date dayFinish;
+    private Time timeStart;
 
     public String getId() {
         return id;
@@ -119,8 +54,75 @@ public class Course implements java.io.Serializable {
         this.createBy = createBy;
     }
 
+    public Date getDayStart() {
+        return dayStart;
+    }
+
+    public void setDayStart(Date dayStart) {
+        this.dayStart = dayStart;
+    }
+
+    public Date getDayFinish() {
+        return dayFinish;
+    }
+
+    public void setDayFinish(Date dayFinish) {
+        this.dayFinish = dayFinish;
+    }
+
+    public Time getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(Time timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public Time getTimeFinish() {
+        return timeFinish;
+    }
+
+    public void setTimeFinish(Time timeFinish) {
+        this.timeFinish = timeFinish;
+    }
+
+    public int getWeekday() {
+        return weekday;
+    }
+
+    public void setWeekday(int weekday) {
+        this.weekday = weekday;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+    private Time timeFinish;
+    private int weekday;
+    private String roomName;
+
+    public Course(String id, String name, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
+        this.id = id;
+        this.name = name;
+        this.createBy = createBy;
+        this.dayStart = dayStart;
+        this.dayFinish = dayFinish;
+        this.timeStart = timeStart;
+        this.timeFinish = timeFinish;
+        this.weekday = weekday;
+        this.roomName = roomName;
+
+        Long datetime = System.currentTimeMillis();
+        Timestamp timeCur = new Timestamp(datetime);
+        this.createAt = timeCur;
+    }
+
     //Các phương thức khởi tạo, get, set.
-    public Course(String id, String name, Timestamp createAt, User createBy, Timestamp dayStart, Timestamp dayFinish, Timestamp timeStart, Timestamp timeFinish, int weekday, String roomName) {
+    public Course(String id, String name, Timestamp createAt, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
         this.id = id;
         this.name = name;
         this.createAt = createAt;
@@ -134,17 +136,5 @@ public class Course implements java.io.Serializable {
     }
 
     public Course() {
-        Long datetime = System.currentTimeMillis();
-        Timestamp timeCur = new Timestamp(datetime);
-        this.id = "";
-        this.name = "";
-        this.createAt = timeCur;
-        this.createBy = null;
-        this.dayStart = timeCur;
-        this.dayFinish = timeCur;
-        this.timeStart = timeCur;
-        this.timeFinish = timeCur;
-        this.weekday = 2;
-        this.roomName = "";
     }
 }

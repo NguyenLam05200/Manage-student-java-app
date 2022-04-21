@@ -8,8 +8,8 @@ import dao.CourseDAO;
 import entity.Course;
 import entity.User;
 import java.awt.Component;
-import java.sql.Timestamp;
-import java.text.DateFormat;
+import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -1384,6 +1384,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("Hello");
         String id = inputTextID.getText();
+
         String name = inputTextName.getText();
         String roomName = inputTextRoom.getText();
         int weekday = inputWeekday.getSelectedIndex() + 2;
@@ -1401,10 +1402,10 @@ public class TeacherDashboard extends javax.swing.JFrame {
         Course inputNewCourse = new Course(id,
                 name,
                 user,
-                convertDate(dateStart, true),
-                convertDate(dateEnd, true),
-                convertDate(timeStart, false),
-                convertDate(timeEnd, false),
+                parseDate(dateStart),
+                parseDate(dateEnd),
+                parseTime(timeStart),
+                parseTime(timeEnd),
                 weekday, roomName);
         System.out.println("Input: " + inputNewCourse.toString());
         boolean isAdd = CourseDAO.addCourse(inputNewCourse);
@@ -1415,22 +1416,29 @@ public class TeacherDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private Timestamp convertDate(String inDate, boolean isDate) {
-        String format = "";
-        if (isDate) {
-            format = "dd-MM-yyyy";
-        } else {
-            format = "HH-mm";
-        }
-        DateFormat df = new SimpleDateFormat(format);
-        Timestamp ts = null;
+    static java.sql.Date parseDate(String inputDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date date;
         try {
-            ts = new Timestamp(((java.util.Date) df.parse(inDate)).getTime());
+            date = sdf.parse(inputDate);
+            java.sql.Date sqlDate = new Date(date.getTime());
+            return sqlDate;
         } catch (ParseException ex) {
-            Logger.getLogger(TeacherDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
+    }
 
-        return ts;
+    static java.sql.Time parseTime(String inputTime) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
+        try {
+            long ms;
+            ms = sdf.parse(inputTime).getTime();
+            Time t = new Time(ms);
+            return t;
+        } catch (ParseException ex) {
+        }
+        return null;
     }
 
     void setVisibleContentMain(String namePanel) {
