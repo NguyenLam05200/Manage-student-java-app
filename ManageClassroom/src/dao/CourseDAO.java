@@ -11,6 +11,8 @@ package dao;
 import entity.Course;
 import entity.User;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -109,15 +111,35 @@ public class CourseDAO {
 //                System.out.println("" + temp.size());
 //            }
 //        }
-        User user = UserDAO.findOneById("GV0001");
-        Course course = new Course();
-        course.setId("MH001");
-        course.setName("Lập trình ứng dụng Java");
-        course.setRoomName("G101");
-        course.setWeekday(4);
-        course.setCreateBy(user);
-        addCourse(course);
-        System.out.println("Username: " + user.getName());
-        System.out.println("Hello");
+//        User user = UserDAO.findOneById("GV0001");
+//        Course course = new Course();
+//        course.setId("MH001");
+//        course.setName("Lập trình ứng dụng Java");
+//        course.setRoomName("G101");
+//        course.setWeekday(4);
+//        course.setCreateBy(user);
+//        addCourse(course);
+//        System.out.println("Username: " + user.getName());
+//        System.out.println("Hello");
+        Course course = findOneById("CSC13101");
+        System.out.println("course id: " + course.getId());
+        System.out.println("course name: " + course.getName());
+        System.out.println("course room: " + course.getRoomName());
+        System.out.println("course dateStart: " + course.getDayStart());
+        LocalDate localDate = course.getDayStart().toLocalDate();
+
+        System.out.println(localDate.getDayOfMonth());
+        System.out.println(localDate.getMonthValue());
+        System.out.println(localDate.getYear());
+
+        System.out.println("\n==================\ncourse dateEnd: " + course.getDayFinish());
+        System.out.println("course timeStart: " + course.getTimeStart());
+        System.out.println("course timeFinish: " + course.getTimeFinish());
+        Time temp = course.getTimeFinish();
+        System.out.println("Hour: " + temp.getHours());
+        System.out.println("Minute: " + temp.getMinutes());
+
+        System.out.println("course weekday: " + course.getWeekday());
+
     }
 }
