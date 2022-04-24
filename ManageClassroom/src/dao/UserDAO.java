@@ -75,8 +75,9 @@ public class UserDAO {
 //            System.out.println("User name: " + temp.getUsername());
 //            System.out.println("password: " + temp.getPassword());
 //        }
-        temp.setPassword(handlePassword.hashPassword("1"));
-        changePassword(temp);
+        System.out.println("Username: " + temp.getName());
+//        temp.setPassword(handlePassword.hashPassword("1"));
+//        changePassword(temp);
 //        System.out.println("user: " + temp == null);
     }
 }

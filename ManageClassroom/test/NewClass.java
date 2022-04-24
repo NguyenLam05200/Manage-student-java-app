@@ -28,6 +28,9 @@ public class NewClass {
 //        format = "HH-mm";
 //        System.out.println("Time: " + convertDate(time, false));
 //
+        for (int i = 0; i < 15; i++) {
+            System.out.println("`week_" + (i + 1) + "` boolean NOT NULL DEFAULT 0,");
+        }
         String strDate = "2011-12-31";
 
         /*

@@ -5,15 +5,19 @@
 package view;
 
 import dao.CourseDAO;
+import dao.CourseWeekDAO;
 import entity.Course;
+import entity.Course_Week;
 import entity.User;
 import java.awt.Component;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -148,9 +152,9 @@ public class TeacherDashboard extends javax.swing.JFrame {
         inputYearStart = new javax.swing.JComboBox<>();
         jPanel21 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        inputDayEnd = new javax.swing.JComboBox<>();
-        inputMonthEnd = new javax.swing.JComboBox<>();
-        inputYearEnd = new javax.swing.JComboBox<>();
+        inputDayFinish = new javax.swing.JComboBox<>();
+        inputMonthFinish = new javax.swing.JComboBox<>();
+        inputYearFinish = new javax.swing.JComboBox<>();
         jPanel12 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
@@ -162,8 +166,8 @@ public class TeacherDashboard extends javax.swing.JFrame {
         inputMinuteStart = new javax.swing.JComboBox<>();
         jPanel23 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        inputHourEnd = new javax.swing.JComboBox<>();
-        inputMinuteEnd = new javax.swing.JComboBox<>();
+        inputHourFinish = new javax.swing.JComboBox<>();
+        inputMinuteFinish = new javax.swing.JComboBox<>();
         jPanel24 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -409,6 +413,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         panelCourses.setPreferredSize(new java.awt.Dimension(891, 401));
 
         Course.setBackground(new java.awt.Color(255, 204, 255));
+        Course.setName("courseInfo"); // NOI18N
         Course.setPreferredSize(new java.awt.Dimension(675, 389));
         Course.setVisible(false);
 
@@ -437,7 +442,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textIDOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -448,7 +453,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textIDOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -471,7 +476,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textNameOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -482,7 +487,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textNameOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -505,7 +510,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textRoomOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -516,7 +521,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textRoomOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -539,7 +544,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textDatestartOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -550,7 +555,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textDatestartOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -573,7 +578,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textDatefinishOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -584,7 +589,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textDatefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -603,7 +608,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -633,7 +638,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel39Layout.setVerticalGroup(
@@ -642,7 +647,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -666,7 +671,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel40Layout.setVerticalGroup(
@@ -675,7 +680,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -699,7 +704,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel41Layout.setVerticalGroup(
@@ -708,7 +713,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -741,7 +746,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGetTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addComponent(btnGetTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel42Layout.setVerticalGroup(
@@ -786,7 +791,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCheckAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(btnCheckAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel43Layout.setVerticalGroup(
@@ -814,7 +819,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -824,20 +829,20 @@ public class TeacherDashboard extends javax.swing.JFrame {
         Course.setLayout(CourseLayout);
         CourseLayout.setHorizontalGroup(
             CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 882, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
             .addGroup(CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CourseLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         CourseLayout.setVerticalGroup(
             CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
+            .addGap(0, 468, Short.MAX_VALUE)
             .addGroup(CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CourseLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -845,6 +850,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jScrollPane1.setAlignmentX(5.0F);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setName("listCourse"); // NOI18N
 
         jPanel30.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -859,6 +865,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jPanel28.setBackground(new java.awt.Color(204, 255, 153));
         jPanel28.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 102, 102), new java.awt.Color(102, 102, 102), null));
         jPanel28.setMinimumSize(new java.awt.Dimension(150, 80));
+        jPanel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel28MouseClicked(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
@@ -1190,28 +1201,28 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("<html>Finishing<br/>day</html>");
 
-        inputDayEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31" }));
-        inputDayEnd.addActionListener(new java.awt.event.ActionListener() {
+        inputDayFinish.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31" }));
+        inputDayFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputDayEndActionPerformed(evt);
+                inputDayFinishActionPerformed(evt);
             }
         });
 
-        inputMonthEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        inputMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
-        inputMonthEnd.addActionListener(new java.awt.event.ActionListener() {
+        inputMonthFinish.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputMonthFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        inputMonthFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputMonthEndActionPerformed(evt);
+                inputMonthFinishActionPerformed(evt);
             }
         });
 
-        inputYearEnd.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        inputYearEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024", "Năm 2025", "Năm 2026", "Năm 2027", "Năm 2028", "Năm 2029", "Năm 2030", "Năm 2031", "Năm 2032", "Năm 2033", "Năm 2034", "Năm 2035", "Năm 2036", "Năm 2037", "Năm 2038", "Năm 2039", "Năm 2040", "Năm 2041", "Năm 2042", "Năm 2043", "Năm 2044", "Năm 2045", "Năm 2046", "Năm 2047", "Năm 2048", "Năm 2049", "Năm 2050" }));
-        inputYearEnd.setSelectedIndex(2);
-        inputYearEnd.addActionListener(new java.awt.event.ActionListener() {
+        inputYearFinish.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        inputYearFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024", "Năm 2025", "Năm 2026", "Năm 2027", "Năm 2028", "Năm 2029", "Năm 2030", "Năm 2031", "Năm 2032", "Năm 2033", "Năm 2034", "Năm 2035", "Năm 2036", "Năm 2037", "Năm 2038", "Năm 2039", "Năm 2040", "Năm 2041", "Năm 2042", "Năm 2043", "Năm 2044", "Năm 2045", "Năm 2046", "Năm 2047", "Năm 2048", "Năm 2049", "Năm 2050" }));
+        inputYearFinish.setSelectedIndex(2);
+        inputYearFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputYearEndActionPerformed(evt);
+                inputYearFinishActionPerformed(evt);
             }
         });
 
@@ -1223,11 +1234,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputDayFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputMonthFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputYearFinish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
@@ -1239,9 +1250,9 @@ public class TeacherDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputDayFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMonthFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputYearFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -1308,7 +1319,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("   Time begin");
+        jLabel9.setText("   Time start");
 
         inputHourStart.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         inputHourStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 giờ", "1 giờ", "2 giờ", "3 giờ", "4 giờ", "5 giờ", "6 giờ", "7 giờ", "8 giờ", "9 giờ", "10 giờ", "11 giờ", "12 giờ", "13 giờ", "14 giờ", "15 giờ", "16 giờ", "17 giờ", "18 giờ", "19 giờ", "20 giờ", "21 giờ", "22 giờ", "23 giờ" }));
@@ -1356,21 +1367,21 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("   Time end");
+        jLabel18.setText("   Time finish");
 
-        inputHourEnd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        inputHourEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 giờ", "1 giờ", "2 giờ", "3 giờ", "4 giờ", "5 giờ", "6 giờ", "7 giờ", "8 giờ", "9 giờ", "10 giờ", "11 giờ", "12 giờ", "13 giờ", "14 giờ", "15 giờ", "16 giờ", "17 giờ", "18 giờ", "19 giờ", "20 giờ", "21 giờ", "22 giờ", "23 giờ" }));
-        inputHourEnd.addActionListener(new java.awt.event.ActionListener() {
+        inputHourFinish.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputHourFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 giờ", "1 giờ", "2 giờ", "3 giờ", "4 giờ", "5 giờ", "6 giờ", "7 giờ", "8 giờ", "9 giờ", "10 giờ", "11 giờ", "12 giờ", "13 giờ", "14 giờ", "15 giờ", "16 giờ", "17 giờ", "18 giờ", "19 giờ", "20 giờ", "21 giờ", "22 giờ", "23 giờ" }));
+        inputHourFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputHourEndActionPerformed(evt);
+                inputHourFinishActionPerformed(evt);
             }
         });
 
-        inputMinuteEnd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        inputMinuteEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 phút", "1 phút", "2 phút", "3 phút", "4 phút", "5 phút", "6 phút", "7 phút", "8 phút", "9 phút", "10 phút", "11 phút", "12 phút", "13 phút", "14 phút", "15 phút", "16 phút", "17 phút", "18 phút", "19 phút", "20 phút", "21 phút", "22 phút", "23 phút", "24 phút", "25 phút", "26 phút", "27 phút", "28 phút", "29 phút", "30 phút", "31 phút", "32 phút", "33 phút", "34 phút", "35 phút", "36 phút", "37 phút", "38 phút", "39 phút", "40 phút", "41 phút", "42 phút", "43 phút", "44 phút", "45 phút", "46 phút", "47 phút", "48 phút", "49 phút", "50 phút", "51 phút", "52 phút", "53 phút", "54 phút", "55 phút", "56 phút", "57 phút", "58 phút", "59 phút" }));
-        inputMinuteEnd.addActionListener(new java.awt.event.ActionListener() {
+        inputMinuteFinish.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        inputMinuteFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 phút", "1 phút", "2 phút", "3 phút", "4 phút", "5 phút", "6 phút", "7 phút", "8 phút", "9 phút", "10 phút", "11 phút", "12 phút", "13 phút", "14 phút", "15 phút", "16 phút", "17 phút", "18 phút", "19 phút", "20 phút", "21 phút", "22 phút", "23 phút", "24 phút", "25 phút", "26 phút", "27 phút", "28 phút", "29 phút", "30 phút", "31 phút", "32 phút", "33 phút", "34 phút", "35 phút", "36 phút", "37 phút", "38 phút", "39 phút", "40 phút", "41 phút", "42 phút", "43 phút", "44 phút", "45 phút", "46 phút", "47 phút", "48 phút", "49 phút", "50 phút", "51 phút", "52 phút", "53 phút", "54 phút", "55 phút", "56 phút", "57 phút", "58 phút", "59 phút" }));
+        inputMinuteFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputMinuteEndActionPerformed(evt);
+                inputMinuteFinishActionPerformed(evt);
             }
         });
 
@@ -1382,9 +1393,9 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputHourEnd, 0, 107, Short.MAX_VALUE)
+                .addComponent(inputHourFinish, 0, 107, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(inputMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputMinuteFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -1393,8 +1404,8 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(inputHourEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputHourFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMinuteFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1739,57 +1750,60 @@ public class TeacherDashboard extends javax.swing.JFrame {
         initProfileContent(user);
     }
 
+    private void generateEachCourse(Course course) {
+
+        javax.swing.JPanel generateEachCourse = new javax.swing.JPanel();
+        generateEachCourse.setBackground(new java.awt.Color(255, 255, 204));
+        generateEachCourse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 102, 102), new java.awt.Color(102, 102, 102), null));
+        generateEachCourse.setMinimumSize(new java.awt.Dimension(150, 80));
+
+        generateEachCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                        panelEachCourse1MouseClicked(evt);
+                clickEachCourse(course);
+            }
+        });
+
+        javax.swing.JLabel generateIDCourse = new javax.swing.JLabel();
+        javax.swing.JLabel generateNameCourse = new javax.swing.JLabel();
+
+        generateIDCourse.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        generateIDCourse.setForeground(new java.awt.Color(0, 0, 0));
+        generateIDCourse.setText("ID: " + course.getId());
+
+        generateNameCourse.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
+        generateNameCourse.setForeground(new java.awt.Color(0, 0, 0));
+        generateNameCourse.setText(course.getName());
+
+        javax.swing.GroupLayout generateEachCourseLayout = new javax.swing.GroupLayout(generateEachCourse);
+        generateEachCourse.setLayout(generateEachCourseLayout);
+        generateEachCourseLayout.setHorizontalGroup(
+                generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(generateEachCourseLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(generateIDCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(generateNameCourse))
+                                .addContainerGap())
+        );
+        generateEachCourseLayout.setVerticalGroup(
+                generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(generateEachCourseLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(generateIDCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generateNameCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        jPanel27.add(generateEachCourse);
+    }
+
     private void generateCourses(User user) {
         List<Course> listCourse = CourseDAO.getCoursesByCreator(user);
         if (listCourse != null) {
             for (Course course : listCourse) {
-
-                javax.swing.JPanel generateEachCourse = new javax.swing.JPanel();
-                generateEachCourse.setBackground(new java.awt.Color(255, 255, 204));
-                generateEachCourse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 102, 102), new java.awt.Color(102, 102, 102), null));
-                generateEachCourse.setMinimumSize(new java.awt.Dimension(150, 80));
-
-                generateEachCourse.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                        panelEachCourse1MouseClicked(evt);
-                        System.out.println("ID: " + course.getId());
-                        clickEachCourse(course);
-                    }
-                });
-
-                javax.swing.JLabel generateIDCourse = new javax.swing.JLabel();
-                javax.swing.JLabel generateNameCourse = new javax.swing.JLabel();
-
-                generateIDCourse.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-                generateIDCourse.setForeground(new java.awt.Color(0, 0, 0));
-                generateIDCourse.setText("ID: " + course.getId());
-
-                generateNameCourse.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
-                generateNameCourse.setForeground(new java.awt.Color(0, 0, 0));
-                generateNameCourse.setText(course.getName());
-
-                javax.swing.GroupLayout generateEachCourseLayout = new javax.swing.GroupLayout(generateEachCourse);
-                generateEachCourse.setLayout(generateEachCourseLayout);
-                generateEachCourseLayout.setHorizontalGroup(
-                        generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(generateEachCourseLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(generateIDCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(generateNameCourse))
-                                        .addContainerGap())
-                );
-                generateEachCourseLayout.setVerticalGroup(
-                        generateEachCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(generateEachCourseLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(generateIDCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(generateNameCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addContainerGap())
-                );
-
-                jPanel27.add(generateEachCourse);
+                generateEachCourse(course);
             }
         }
     }
@@ -1841,13 +1855,16 @@ public class TeacherDashboard extends javax.swing.JFrame {
         //                c.setVisible(!c.isVisible());
         //            }
         //        }
+        clickNavCourse();
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void clickNavCourse() {
         jPanel27.revalidate();
         jPanel27.repaint();
         //        add(new JScrollPane(Courses));
-        jScrollPane1.setVisible(true);
+        setVisibleContentCourses("listCourse");
         setVisibleContentMain("panelCourses");
-
-    }//GEN-LAST:event_jPanel5MouseClicked
+    }
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         // TODO add your handling code here:
@@ -1953,13 +1970,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTextRoomActionPerformed
 
-    private void inputDayEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDayEndActionPerformed
+    private void inputDayFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDayFinishActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputDayEndActionPerformed
+    }//GEN-LAST:event_inputDayFinishActionPerformed
 
-    private void inputMonthEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthEndActionPerformed
+    private void inputMonthFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMonthFinishActionPerformed
         // TODO add your handling code here:
-        int index = inputMonthEnd.getSelectedIndex();
+        int index = inputMonthFinish.getSelectedIndex();
         Integer thang31[] = {1, 3, 5, 7, 8, 10, 12};
         Integer thang30[] = {4, 6, 9, 11};
 
@@ -1970,11 +1987,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 = Arrays.asList(thang30)
                         .contains(index + 1);
         if (is31) {
-            inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31"}));
+            inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30", "Ngày 31"}));
         } else if (is30) {
-            inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30"}));
+            inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29", "Ngày 30"}));
         } else {
-            String[] temp = inputYearEnd.getSelectedItem().toString().split(" ");
+            String[] temp = inputYearFinish.getSelectedItem().toString().split(" ");
             int year = Integer.parseInt(temp[1]);
             boolean isLeap = false;
             if (year % 4 == 0)//chia hết cho 4 là năm nhuận
@@ -1995,18 +2012,18 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 isLeap = false;
             }
             if (isLeap) {
-                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+                inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
             } else {
-                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+                inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
             }
         }
-    }//GEN-LAST:event_inputMonthEndActionPerformed
+    }//GEN-LAST:event_inputMonthFinishActionPerformed
 
-    private void inputYearEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputYearEndActionPerformed
+    private void inputYearFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputYearFinishActionPerformed
         // TODO add your handling code here:
-        int index = inputMonthEnd.getSelectedIndex();
+        int index = inputMonthFinish.getSelectedIndex();
         if (index + 1 == 2) {
-            String[] temp = inputYearEnd.getSelectedItem().toString().split(" ");
+            String[] temp = inputYearFinish.getSelectedItem().toString().split(" ");
             int year = Integer.parseInt(temp[1]);
             boolean isLeap = false;
             if (year % 4 == 0)//chia hết cho 4 là năm nhuận
@@ -2027,12 +2044,12 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 isLeap = false;
             }
             if (isLeap) {
-                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
+                inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28", "Ngày 29"}));
             } else {
-                inputDayEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
+                inputDayFinish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ngày 01", "Ngày 02", "Ngày 03", "Ngày 04", "Ngày 05", "Ngày 06", "Ngày 07", "Ngày 08", "Ngày 09", "Ngày 10", "Ngày 11", "Ngày 12", "Ngày 13", "Ngày 14", "Ngày 15", "Ngày 16", "Ngày 17", "Ngày 18", "Ngày 19", "Ngày 20", "Ngày 21", "Ngày 22", "Ngày 23", "Ngày 24", "Ngày 25", "Ngày 26", "Ngày 27", "Ngày 28"}));
             }
         }
-    }//GEN-LAST:event_inputYearEndActionPerformed
+    }//GEN-LAST:event_inputYearFinishActionPerformed
 
     private void inputHourStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHourStartActionPerformed
         // TODO add your handling code here:
@@ -2042,13 +2059,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputMinuteStartActionPerformed
 
-    private void inputHourEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHourEndActionPerformed
+    private void inputHourFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHourFinishActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputHourEndActionPerformed
+    }//GEN-LAST:event_inputHourFinishActionPerformed
 
-    private void inputMinuteEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinuteEndActionPerformed
+    private void inputMinuteFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinuteFinishActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputMinuteEndActionPerformed
+    }//GEN-LAST:event_inputMinuteFinishActionPerformed
 
     private void inputMonthStartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_inputMonthStartItemStateChanged
         // TODO add your handling code here:
@@ -2068,22 +2085,34 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 + inputYearStart.getSelectedItem().toString().split(" ")[1];
         String timeStart = inputHourStart.getSelectedItem().toString().split(" ")[0]
                 + "-" + inputMinuteStart.getSelectedItem().toString().split(" ")[0];
-        String dateEnd = inputDayEnd.getSelectedIndex() + 1 + "-"
-                + (inputMonthEnd.getSelectedIndex() + 1) + "-"
-                + inputYearEnd.getSelectedItem().toString().split(" ")[1];
-        String timeEnd = inputHourEnd.getSelectedItem().toString().split(" ")[0]
-                + "-" + inputMinuteEnd.getSelectedItem().toString().split(" ")[0];
+        String dateFinish = inputDayFinish.getSelectedIndex() + 1 + "-"
+                + (inputMonthFinish.getSelectedIndex() + 1) + "-"
+                + inputYearFinish.getSelectedItem().toString().split(" ")[1];
+        String timeFinish = inputHourFinish.getSelectedItem().toString().split(" ")[0]
+                + "-" + inputMinuteFinish.getSelectedItem().toString().split(" ")[0];
         Course inputNewCourse = new Course(id,
                 name,
                 user,
                 parseDate(dateStart),
-                parseDate(dateEnd),
+                parseDate(dateFinish),
                 parseTime(timeStart),
-                parseTime(timeEnd),
+                parseTime(timeFinish),
                 weekday, roomName);
         System.out.println("Input: " + inputNewCourse.toString());
         boolean isAdd = CourseDAO.addCourse(inputNewCourse);
+
+        Long datetime = System.currentTimeMillis();
+        Timestamp timeCur = new Timestamp(datetime);
+
+        java.sql.Date curDate = parseDate(dateStart);
+
+        for (int i = 0; i < 15; i++) {
+            Course_Week course_week = new Course_Week(i + 1, inputNewCourse, timeCur, user, inputNewCourse.getWeekday(), addDays(curDate, 7 * i), inputNewCourse.getTimeStart(), inputNewCourse.getTimeFinish(), roomName);
+            CourseWeekDAO.addWeek(course_week);
+        }
         if (isAdd) {
+            generateEachCourse(inputNewCourse);
+            clickNavCourse();
             JOptionPane.showMessageDialog(this, "Add success!");
         } else {
             JOptionPane.showMessageDialog(this, "Add Fail!");
@@ -2116,6 +2145,18 @@ public class TeacherDashboard extends javax.swing.JFrame {
         setVisibleContentActionCourse("panelCheckAttendance");
     }//GEN-LAST:event_btnCheckAttendanceActionPerformed
 
+    private void jPanel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel28MouseClicked
+        // TODO add your handling code here:
+        setVisibleContentMain("panelCreateNewCourse");
+    }//GEN-LAST:event_jPanel28MouseClicked
+
+    public static Date addDays(Date date, int days) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, days);
+        return new Date(c.getTimeInMillis());
+    }
+
     void clickEachCourse(Course course) {
         textIDOutput.setText(": " + course.getId());
         textNameOutput.setText("<html><p> " + course.getName() + "</p></html>");
@@ -2131,8 +2172,10 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         textWeekdayOutput.setText(": Thứ " + course.getWeekday());
 
-        Course.setVisible(true);
-        jScrollPane1.setVisible(false);
+//        Course.setVisible(true);
+//        jScrollPane1.setVisible(false);
+        setVisibleContentCourses("courseInfo");
+        setVisibleContentMain("panelCourses");
     }
 
     static int[] reverseParseDate(java.sql.Date input) {
@@ -2196,6 +2239,17 @@ public class TeacherDashboard extends javax.swing.JFrame {
         }
     }
 
+    void setVisibleContentCourses(String namePanel) {
+        Component[] comps = panelCourses.getComponents();
+        for (Component c : comps) {
+            if (namePanel.equals(c.getName())) {
+                c.setVisible(true);
+            } else {
+                c.setVisible(false);
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -2245,19 +2299,19 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel fullnameLabel;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JComboBox<String> inputDayEnd;
+    private javax.swing.JComboBox<String> inputDayFinish;
     private javax.swing.JComboBox<String> inputDayStart;
-    private javax.swing.JComboBox<String> inputHourEnd;
+    private javax.swing.JComboBox<String> inputHourFinish;
     private javax.swing.JComboBox<String> inputHourStart;
-    private javax.swing.JComboBox<String> inputMinuteEnd;
+    private javax.swing.JComboBox<String> inputMinuteFinish;
     private javax.swing.JComboBox<String> inputMinuteStart;
-    private javax.swing.JComboBox<String> inputMonthEnd;
+    private javax.swing.JComboBox<String> inputMonthFinish;
     private javax.swing.JComboBox<String> inputMonthStart;
     private javax.swing.JTextField inputTextID;
     private javax.swing.JTextField inputTextName;
     private javax.swing.JTextField inputTextRoom;
     private javax.swing.JComboBox<String> inputWeekday;
-    private javax.swing.JComboBox<String> inputYearEnd;
+    private javax.swing.JComboBox<String> inputYearFinish;
     private javax.swing.JComboBox<String> inputYearStart;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

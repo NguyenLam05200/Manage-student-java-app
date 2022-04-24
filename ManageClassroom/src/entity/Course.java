@@ -21,6 +21,42 @@ public class Course implements java.io.Serializable {
     private Date dayStart;
     private Date dayFinish;
     private Time timeStart;
+    private Time timeFinish;
+    private int weekday;
+    private String roomName;
+
+    public Course(String id, String name, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
+        this.id = id;
+        this.name = name;
+        this.createBy = createBy;
+        this.dayStart = dayStart;
+        this.dayFinish = dayFinish;
+        this.timeStart = timeStart;
+        this.timeFinish = timeFinish;
+        this.weekday = weekday;
+        this.roomName = roomName;
+
+        Long datetime = System.currentTimeMillis();
+        Timestamp timeCur = new Timestamp(datetime);
+        this.createAt = timeCur;
+    }
+
+    //Các phương thức khởi tạo, get, set.
+    public Course(String id, String name, Timestamp createAt, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
+        this.id = id;
+        this.name = name;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.dayStart = dayStart;
+        this.dayFinish = dayFinish;
+        this.timeStart = timeStart;
+        this.timeFinish = timeFinish;
+        this.weekday = weekday;
+        this.roomName = roomName;
+    }
+
+    public Course() {
+    }
 
     public String getId() {
         return id;
@@ -101,40 +137,5 @@ public class Course implements java.io.Serializable {
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
-    private Time timeFinish;
-    private int weekday;
-    private String roomName;
 
-    public Course(String id, String name, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
-        this.id = id;
-        this.name = name;
-        this.createBy = createBy;
-        this.dayStart = dayStart;
-        this.dayFinish = dayFinish;
-        this.timeStart = timeStart;
-        this.timeFinish = timeFinish;
-        this.weekday = weekday;
-        this.roomName = roomName;
-
-        Long datetime = System.currentTimeMillis();
-        Timestamp timeCur = new Timestamp(datetime);
-        this.createAt = timeCur;
-    }
-
-    //Các phương thức khởi tạo, get, set.
-    public Course(String id, String name, Timestamp createAt, User createBy, Date dayStart, Date dayFinish, Time timeStart, Time timeFinish, int weekday, String roomName) {
-        this.id = id;
-        this.name = name;
-        this.createAt = createAt;
-        this.createBy = createBy;
-        this.dayStart = dayStart;
-        this.dayFinish = dayFinish;
-        this.timeStart = timeStart;
-        this.timeFinish = timeFinish;
-        this.weekday = weekday;
-        this.roomName = roomName;
-    }
-
-    public Course() {
-    }
 }

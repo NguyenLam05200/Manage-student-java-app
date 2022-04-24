@@ -10,10 +10,12 @@
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.pool_size">10</property>
         <property name="hibernate.current_session_context_class">thread</property>        
-<!--        <property name="hibernate.transaction.flush_before_completion">true</property>
+        <!--        <property name="hibernate.transaction.flush_before_completion">true</property>
         <property name="hibernate.transaction.auto_close_session">true</property>-->
         <!--<mapping resource="entity/Khachhang.hbm.xml"/>-->        
         <mapping resource="entity/User.hbm.xml"/>        
-        <mapping resource="entity/Course.hbm.xml"/>
+        <mapping resource="entity/Course.hbm.xml"/>        
+        <mapping resource="entity/User_Course.hbm.xml"/>        
+        <mapping resource="entity/Course_Week.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

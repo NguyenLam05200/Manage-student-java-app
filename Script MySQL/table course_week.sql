@@ -15,27 +15,25 @@
 */
 
 SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
+ 
 -- ----------------------------
 -- Table structure for users
 -- ----------------------------
-DROP TABLE IF EXISTS `courses`;
-CREATE TABLE `courses` (
+DROP TABLE IF EXISTS `course_week`;
+CREATE TABLE `course_week` (
   -- `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `id` varchar(15) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `createAt` timestamp DEFAULT (CURRENT_TIMESTAMP),
-  `createBy` varchar(15) NOT NULL,
-  `dayStart` date DEFAULT (CURRENT_DATE),
-  `dayFinish` date DEFAULT (CURRENT_DATE),
+  `weekID` int(1) unsigned NOT NULL DEFAULT 1 CHECK (weekday > 0 AND weekday < 30),
+  `courseID` varchar(15) NOT NULL,
+  `updateAt` timestamp DEFAULT (CURRENT_TIMESTAMP),
+  `updateBy` varchar(15) NOT NULL,
   `weekday` int(1) unsigned NOT NULL DEFAULT 2 CHECK (weekday > 1 AND weekday < 9),
+  `day` date DEFAULT (CURRENT_DATE),
   `timeStart` time DEFAULT (CURRENT_TIME),
   `timeFinish` time DEFAULT (CURRENT_TIME),
   `roomName` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  FOREIGN KEY (`createBy`) REFERENCES users(`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`weekID`,`courseID`),
+  KEY `idx_fk_weekID` (`weekID`),
+  CONSTRAINT `fk_course_week_course` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`) ON UPDATE CASCADE,
+  FOREIGN KEY (`updateBy`) REFERENCES users(`id`)
 
-SET FOREIGN_KEY_CHECKS = 1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

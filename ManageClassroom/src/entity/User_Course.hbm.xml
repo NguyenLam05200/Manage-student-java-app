@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2011 4:33:03 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entity.User_Course" table="user_course" catalog="attendance">
+        <composite-id>
+            <key-many-to-one name="userID" class="entity.User" column="userID"/>
+            <key-many-to-one name="courseID" class="entity.Course" column="courseID"/>
+        </composite-id>  
+        <property name="importAt" type="timestamp">
+            <column name="importAt" />
+        </property>
+        <many-to-one name="importBy" class="entity.User" >
+            <column name="importBy" />
+        </many-to-one>
+        <property name="isActive" type="boolean">
+            <column name="isActive" />
+        </property> 
+        <property name="week_1" type="boolean">
+            <column name="week_1" />
+        </property> 
+        <property name="week_2" type="boolean">
+            <column name="week_2" />
+        </property> 
+        <property name="week_3" type="boolean">
+            <column name="week_3" />
+        </property> 
+        <property name="week_4" type="boolean">
+            <column name="week_4" />
+        </property> 
+        <property name="week_5" type="boolean">
+            <column name="week_5" />
+        </property>  
+        <property name="week_6" type="boolean">
+            <column name="week_6" />
+        </property> 
+        <property name="week_7" type="boolean">
+            <column name="week_7" />
+        </property> 
+        <property name="week_8" type="boolean">
+            <column name="week_8" />
+        </property> 
+        <property name="week_9" type="boolean">
+            <column name="week_9" />
+        </property> 
+        <property name="week_10" type="boolean">
+            <column name="week_10" />
+        </property> 
+        <property name="week_11" type="boolean">
+            <column name="week_11" />
+        </property> 
+        <property name="week_12" type="boolean">
+            <column name="week_12" />
+        </property> 
+        <property name="week_13" type="boolean">
+            <column name="week_13" />
+        </property> 
+        <property name="week_14" type="boolean">
+            <column name="week_14" />
+        </property> 
+        <property name="week_15" type="boolean">
+            <column name="week_15" />
+        </property> 
+    </class>
+</hibernate-mapping>

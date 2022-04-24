@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2011 4:33:03 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entity.Course_Week" table="course_week" catalog="attendance">
+        <composite-id>
+            <key-property name="weekID" type="int" column="weekID"/>
+            <key-many-to-one name="courseID" class="entity.Course" column="courseID"/>
+        </composite-id>  
+        <property name="updateAt" type="timestamp">
+            <column name="updateAt" />
+        </property>
+        <many-to-one name="updateBy" class="entity.User" >
+            <column name="updateBy" />
+        </many-to-one>
+        <property name="weekday" type="int">
+            <column name="weekday" />
+        </property> 
+        <property name="day" type="java.sql.Date">
+            <column name="day" />
+        </property> 
+        <property name="timeStart" type="java.sql.Time">
+            <column name="timeStart" />
+        </property> 
+        <property name="timeFinish" type="java.sql.Time">
+            <column name="timeFinish" />
+        </property> 
+        <property name="roomName" type="string">
+            <column name="roomName" />
+        </property>  
+    </class>
+</hibernate-mapping>
