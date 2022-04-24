@@ -21,36 +21,6 @@ import view.TeacherDashboard;
 public class NewClass {
 
     public static void main(String[] args) throws ParseException {
-//        String date = "05-20-2000";
-//        String format = "ddMMyyyy";
-//        System.out.println("Date: " + convertDate(date, true));
-//        String time = "24-30";
-//        format = "HH-mm";
-//        System.out.println("Time: " + convertDate(time, false));
-//
-        for (int i = 0; i < 15; i++) {
-            System.out.println("`week_" + (i + 1) + "` boolean NOT NULL DEFAULT 0,");
-        }
-        String strDate = "2011-12-31";
-
-        /*
- * To convert String to java.sql.Date, use
- * Date (long date) constructor.
- *
- * It creates java.sql.Date object from the milliseconds provided.
-         */
-        //first convert string to java.util.Date object using SimpleDateFormat
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        java.util.Date date;
-        date = sdf.parse(strDate);
-
-        java.sql.Date sqlDate = new Date(date.getTime());
-
-        System.out.println("String converted to java.sql.Date :" + sqlDate);
-
-        System.out.println("Test: " + parseDate("5-2-2000"));
-        java.sql.Time myTime = java.sql.Time.valueOf("14:50:00");
-        System.out.println("Test time: " + parseTime("14-30"));
 
     }
 

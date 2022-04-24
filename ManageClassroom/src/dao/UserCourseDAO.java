@@ -39,10 +39,11 @@ public class UserCourseDAO {
 
     public static void main(String[] args) {
         System.out.println("Hello from user_courseDAO");
-        Course course = CourseDAO.findOneById("MTH00051");
+        Course course = CourseDAO.findOneById("CSC13007");
         System.out.println("CourseID: " + course.getId());
         List<User_Course> listCheck = findAllUserByCourse(course);
-        System.out.println("Check: " + listCheck.get(0).getUserID().getId());
+        User user = UserDAO.findOneById(listCheck.get(0).getUserID().getId());
+        System.out.println("Check: " + user.getName());
 
     }
 }
