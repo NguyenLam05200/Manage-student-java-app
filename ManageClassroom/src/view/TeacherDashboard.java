@@ -26,7 +26,6 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -1803,6 +1802,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         panelAddMember.setName("panelAddMember"); // NOI18N
 
         jFileChooser1.setBackground(new java.awt.Color(0, 0, 0));
+        jFileChooser1.setFileFilter(new FileNameExtensionFilter("Only .csv files", "csv"));
         jFileChooser1.setToolTipText("");
         jFileChooser1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jFileChooser1.setOpaque(true);
@@ -1945,6 +1945,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         lableNameFileChooser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lableNameFileChooser.setForeground(new java.awt.Color(0, 0, 0));
         lableNameFileChooser.setText("Choose file");
+        lableNameFileChooser.setName("x"); // NOI18N
 
         javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
         jPanel53.setLayout(jPanel53Layout);
@@ -2703,6 +2704,16 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        String path = lableNameFileChooser.getName();
+        if (!"x".equals(path)) {
+            List<String> readFileCSV = util.handleCSV.readImportCSV(path);
+            for (String x : readFileCSV) {
+                System.out.println(x);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please choose a file first!");
+        }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -2724,15 +2735,23 @@ public class TeacherDashboard extends javax.swing.JFrame {
         System.out.println("Hello");
 
         jPanel45.setVisible(false);
+
+        jFileChooser1.setDialogTitle("Select a .csv file");
+
+//jFileChooser1.removeChoosableFileFilter(f)
+        // only allow files of .txt extension
+//        FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only .csv files", "csv");
+//        jFileChooser1.addChoosableFileFilter(restrict);
         jFileChooser1.setVisible(true);
+
         int result = jFileChooser1.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            System.out.println("not cancel");
             lableNameFileChooser.setText(jFileChooser1.getSelectedFile().getName());
             String path = jFileChooser1.getSelectedFile().getAbsolutePath();
-            System.out.println("file name: " + path);
             lableNameFileChooser.setName(path);
         } else if (result == JFileChooser.CANCEL_OPTION) {
+            lableNameFileChooser.setName("x");
+
             System.out.println("Cancel was selected");
         }
         jFileChooser1.setVisible(false);
