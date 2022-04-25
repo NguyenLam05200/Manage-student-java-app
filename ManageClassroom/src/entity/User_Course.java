@@ -63,6 +63,7 @@ public class User_Course implements java.io.Serializable {
         this.userID = userID;
         this.courseID = courseID;
         this.importBy = importBy;
+        this.isActive = true;
     }
 
     public User getUserID() {

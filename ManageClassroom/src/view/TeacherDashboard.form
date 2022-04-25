@@ -1192,6 +1192,9 @@
                                     <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Get template&lt;br&gt;for adding&lt;/center&gt;&lt;/html&gt;"/>
                                     <Property name="horizontalTextPosition" type="int" value="0"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGetTemplateMouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -3446,7 +3449,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField2" min="-2" pref="189" max="-2" attributes="0"/>
+                                          <Component id="textStudentID" min="-2" pref="189" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jButton4" pref="169" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -3458,7 +3461,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField2" max="32767" attributes="0"/>
+                                              <Component id="textStudentID" max="32767" attributes="0"/>
                                               <Component id="jButton4" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace pref="45" max="32767" attributes="0"/>
@@ -3467,7 +3470,7 @@
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JTextField" name="jTextField2">
+                                <Component class="javax.swing.JTextField" name="textStudentID">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Dialog" size="24" style="1"/>
@@ -3488,6 +3491,9 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Add"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>

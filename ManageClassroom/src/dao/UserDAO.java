@@ -26,6 +26,7 @@ public class UserDAO {
         String hql = "from User";
         Query query = session.createQuery(hql);
         listUser = query.list();
+        session.getTransaction().commit();
         return listUser;
     }
 
@@ -59,6 +60,8 @@ public class UserDAO {
             session.getTransaction().commit();
         } catch (HibernateException e) {
             System.out.println("Opps, " + e);
+            session.getTransaction().commit();
+
             return false;
         }
         return true;

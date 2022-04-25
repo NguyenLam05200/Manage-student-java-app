@@ -206,7 +206,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jPanel46 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jPanel47 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        textStudentID = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel51 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
@@ -771,6 +771,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
         btnGetTemplate.setForeground(new java.awt.Color(0, 0, 0));
         btnGetTemplate.setText("<html><center>Get template<br>for adding</center></html>");
         btnGetTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGetTemplate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGetTemplateMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
         jPanel42.setLayout(jPanel42Layout);
@@ -1840,13 +1845,18 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         jPanel47.setBackground(new java.awt.Color(204, 204, 255));
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTextField2.setText("18120433");
+        textStudentID.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        textStudentID.setText("18120433");
 
         jButton4.setBackground(new java.awt.Color(204, 153, 255));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Add");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
@@ -1854,7 +1864,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel47Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1864,7 +1874,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             .addGroup(jPanel47Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
+                    .addComponent(textStudentID)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -1956,7 +1966,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 373, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                     .addComponent(jPanel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2535,8 +2545,10 @@ public class TeacherDashboard extends javax.swing.JFrame {
         String[] temp = new String[n];
         int index = 0;
         for (User x : allUser) {
-            temp[index] = "" + x.getId() + "-" + x.getName();
-            index++;
+            if (x.getRole() == 1) {
+                temp[index] = "" + x.getId() + " - " + x.getName();
+                index++;
+            }
         }
 
         listCheckImport.setModel(new javax.swing.AbstractListModel<String>() {
@@ -2550,6 +2562,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 return strings[i];
             }
         });
+        int[] indexs = listCheckImport.getSelectedIndices();
         setVisibleContentMain("panelActionCourse");
         setVisibleContentActionCourse("panelAddMember");
     }//GEN-LAST:event_btnImportActionPerformed
@@ -2655,6 +2668,20 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String inputTextStudentID = textStudentID.getText();
+        String result = UserCourseDAO.addUser(inputTextStudentID, curCourse, user);
+        JOptionPane.showMessageDialog(this, result);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnGetTemplateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGetTemplateMouseClicked
+        // TODO add your handling code here:
+        String result = util.handleCSV.getTemplate();
+        JOptionPane.showMessageDialog(this, result);
+    }//GEN-LAST:event_btnGetTemplateMouseClicked
 
     public static Date addDays(Date date, int days) {
         Calendar c = Calendar.getInstance();
@@ -2915,7 +2942,6 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JList<String> listCheckImport;
     private javax.swing.JPanel panelActionCourse;
@@ -2935,6 +2961,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel textNameCourse1;
     private javax.swing.JLabel textNameOutput;
     private javax.swing.JLabel textRoomOutput;
+    private javax.swing.JTextField textStudentID;
     private javax.swing.JLabel textTimefinishOutput;
     private javax.swing.JLabel textTimestartoutput;
     private javax.swing.JLabel textWeekdayOutput;
