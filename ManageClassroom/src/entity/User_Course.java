@@ -33,6 +33,58 @@ public class User_Course implements java.io.Serializable {
     private boolean week_14;
     private boolean week_15;
 
+    public void setRollCall(int week) {
+        switch (week) {
+            case 1:
+                this.week_1 = true;
+                break;
+            case 2:
+                this.week_2 = true;
+                break;
+            case 3:
+                this.week_3 = true;
+                break;
+            case 4:
+                this.week_4 = true;
+                break;
+            case 5:
+                this.week_5 = true;
+                break;
+            case 6:
+                this.week_6 = true;
+                break;
+            case 7:
+                this.week_7 = true;
+                break;
+            case 8:
+                this.week_8 = true;
+                break;
+            case 9:
+                this.week_9 = true;
+                break;
+            case 10:
+                this.week_10 = true;
+                break;
+            case 11:
+                this.week_11 = true;
+                break;
+            case 12:
+                this.week_12 = true;
+                break;
+            case 13:
+                this.week_13 = true;
+                break;
+            case 14:
+                this.week_14 = true;
+                break;
+            case 15:
+                this.week_15 = true;
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
     public User_Course() {
     }
 

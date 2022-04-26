@@ -66,6 +66,21 @@ public class UserCourseDAO {
         }
     }
 
+    public static boolean rollCall(User_Course user_course) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try {
+            session.update(user_course);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.out.println("Opps, " + e);
+            session.getTransaction().commit();
+
+            return false;
+        }
+        return true;
+    }
+
     public static User_Course findByUserCourse(User user, Course course) {
         if (course == null || user == null) {
             System.out.println("Not course or user input");

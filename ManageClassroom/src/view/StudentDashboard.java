@@ -10,6 +10,7 @@ import dao.UserCourseDAO;
 import entity.Course;
 import entity.Course_Week;
 import entity.User;
+import entity.User_Course;
 import java.awt.Component;
 import java.awt.Font;
 import java.sql.Date;
@@ -124,7 +125,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jPanel42 = new javax.swing.JPanel();
         btnImport = new javax.swing.JButton();
         jPanel43 = new javax.swing.JPanel();
-        btnMembers = new javax.swing.JButton();
+        btnCheckAttendance = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel30 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
@@ -193,35 +194,11 @@ public class StudentDashboard extends javax.swing.JFrame {
         panelActionCourse = new javax.swing.JPanel();
         panelCheckAttendance = new javax.swing.JPanel();
         jPanel44 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        textFieldCourseID = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnBackToCourseInfo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         checkAttendanceTable = new javax.swing.JTable();
-        panelAddMember = new javax.swing.JPanel();
-        jFileChooser1 = new javax.swing.JFileChooser();
-        jPanel45 = new javax.swing.JPanel();
-        jPanel48 = new javax.swing.JPanel();
-        jPanel50 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel46 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jPanel47 = new javax.swing.JPanel();
-        textStudentID = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jPanel51 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        jPanel52 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jPanel53 = new javax.swing.JPanel();
-        lableNameFileChooser = new javax.swing.JLabel();
-        jPanel49 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listCheckImport = new javax.swing.JList<>();
-        jLabel28 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         panelCallrollEachWeek = new javax.swing.JPanel();
         jPanel56 = new javax.swing.JPanel();
         labelNameCourseWeek1 = new javax.swing.JLabel();
@@ -456,7 +433,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("ID");
+        jLabel19.setText("Mã MH");
         jLabel19.setPreferredSize(new java.awt.Dimension(63, 46));
 
         textIDOutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -469,7 +446,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textIDOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -480,7 +457,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textIDOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -490,7 +467,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Name");
+        jLabel20.setText("Tên MH");
         jLabel20.setPreferredSize(new java.awt.Dimension(63, 46));
 
         textNameOutput.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
@@ -503,7 +480,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textNameOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -514,7 +491,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textNameOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -524,7 +501,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("Room");
+        jLabel22.setText("Phòng");
         jLabel22.setPreferredSize(new java.awt.Dimension(63, 46));
 
         textRoomOutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -537,7 +514,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textRoomOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -548,7 +525,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textRoomOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -556,9 +533,9 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jPanel35.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel23.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setText("Date start");
+        jLabel23.setText("Ngày bắt đầu");
         jLabel23.setPreferredSize(new java.awt.Dimension(63, 46));
 
         textDatestartOutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -571,7 +548,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textDatestartOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -582,7 +559,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textDatestartOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -592,7 +569,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setText("Date finish");
+        jLabel24.setText("Ngày kết thúc");
         jLabel24.setPreferredSize(new java.awt.Dimension(63, 46));
 
         textDatefinishOutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -605,7 +582,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textDatefinishOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -616,7 +593,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textDatefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -635,7 +612,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -663,9 +640,9 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel39Layout.setVerticalGroup(
@@ -674,7 +651,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textWeekdayOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -684,7 +661,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel26.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel26.setText("Time start");
+        jLabel26.setText("Thời gian học");
 
         textTimestartoutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         textTimestartoutput.setForeground(new java.awt.Color(0, 0, 0));
@@ -696,9 +673,9 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel40Layout.setVerticalGroup(
@@ -707,7 +684,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textTimestartoutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -717,7 +694,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Time finish");
+        jLabel27.setText("Thời gian nghỉ");
 
         textTimefinishOutput.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         textTimefinishOutput.setForeground(new java.awt.Color(0, 0, 0));
@@ -729,9 +706,9 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel41Layout.setVerticalGroup(
@@ -740,7 +717,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textTimefinishOutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -751,7 +728,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         btnImport.setBackground(new java.awt.Color(255, 204, 204));
         btnImport.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         btnImport.setForeground(new java.awt.Color(0, 0, 0));
-        btnImport.setText("<html><center>Call rolll</center></html>");
+        btnImport.setText("<html><center>Điểm danh</center></html>");
         btnImport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -765,27 +742,27 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel42Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel42Layout.setVerticalGroup(
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel42Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
         );
 
         jPanel38.add(jPanel42);
 
         jPanel43.setBackground(new java.awt.Color(153, 204, 255));
 
-        btnMembers.setBackground(new java.awt.Color(153, 255, 153));
-        btnMembers.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        btnMembers.setForeground(new java.awt.Color(0, 0, 0));
-        btnMembers.setText("Check attendance");
-        btnMembers.addActionListener(new java.awt.event.ActionListener() {
+        btnCheckAttendance.setBackground(new java.awt.Color(153, 255, 153));
+        btnCheckAttendance.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnCheckAttendance.setForeground(new java.awt.Color(0, 0, 0));
+        btnCheckAttendance.setText("Check attendance");
+        btnCheckAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMembersActionPerformed(evt);
+                btnCheckAttendanceActionPerformed(evt);
             }
         });
 
@@ -795,14 +772,14 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel43Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMembers, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(btnCheckAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCheckAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -821,7 +798,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -831,7 +808,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         Course.setLayout(CourseLayout);
         CourseLayout.setHorizontalGroup(
             CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
             .addGroup(CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CourseLayout.createSequentialGroup()
                     .addContainerGap()
@@ -840,7 +817,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         );
         CourseLayout.setVerticalGroup(
             CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
             .addGroup(CourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CourseLayout.createSequentialGroup()
                     .addContainerGap()
@@ -885,6 +862,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setAlignmentX(5.0F);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane2.setAutoscrolls(true);
         jScrollPane2.setName("schedule"); // NOI18N
 
@@ -914,7 +892,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         callRowInEachWeek.setBackground(new java.awt.Color(153, 255, 153));
         callRowInEachWeek.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         callRowInEachWeek.setForeground(new java.awt.Color(51, 51, 51));
-        callRowInEachWeek.setText("call roll");
+        callRowInEachWeek.setText("Điểm danh");
         callRowInEachWeek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 callRowInEachWeekActionPerformed(evt);
@@ -943,8 +921,8 @@ public class StudentDashboard extends javax.swing.JFrame {
                     .addComponent(labelTimeDuring, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelEachWeekLayout.createSequentialGroup()
                         .addComponent(labelWeekID, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(callRowInEachWeek, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(callRowInEachWeek))
                     .addComponent(labelTimeDuring1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelTimeDuring2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -994,7 +972,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelCoursesLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
@@ -1010,7 +988,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelCoursesLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
@@ -1665,7 +1643,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
 
         panelProfile.add(jPanel7);
@@ -1678,20 +1656,20 @@ public class StudentDashboard extends javax.swing.JFrame {
 
         jPanel44.setBackground(new java.awt.Color(204, 204, 255));
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField1.setText("Student id");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldCourseID.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textFieldCourseID.setText("Course id");
+        textFieldCourseID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textFieldCourseIDActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 153));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Search");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(255, 153, 153));
+        btnSearch.setForeground(new java.awt.Color(0, 0, 0));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -1701,25 +1679,25 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textFieldCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(btnSearch)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(textFieldCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setText("Back to course info");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBackToCourseInfo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnBackToCourseInfo.setText("Back to course info");
+        btnBackToCourseInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBackToCourseInfoActionPerformed(evt);
             }
         });
 
@@ -1732,7 +1710,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "MSSV", "Name", "W 1", "W 2", "W 3", "W 4", "W 5", "W 6", "W 7", "W 8", "W 9", "W 10", "W 11", "W 12", "W 13", "W 14", "W 15"
+                "Mã Môn Học", "Tên Môn Học", "W 1", "W 2", "W 3", "W 4", "W 5", "W 6", "W 7", "W 8", "W 9", "W 10", "W 11", "W 12", "W 13", "W 14", "W 15"
             }
         ) {
             Class[] types = new Class [] {
@@ -1776,7 +1754,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addGroup(panelCheckAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
                     .addGroup(panelCheckAttendanceLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBackToCourseInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1786,313 +1764,10 @@ public class StudentDashboard extends javax.swing.JFrame {
             .addGroup(panelCheckAttendanceLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelCheckAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBackToCourseInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        panelAddMember.setBackground(new java.awt.Color(204, 204, 255));
-        panelAddMember.setName("panelAddMember"); // NOI18N
-
-        jFileChooser1.setBackground(new java.awt.Color(0, 0, 0));
-        jFileChooser1.setFileFilter(new FileNameExtensionFilter("Only .csv files", "csv"));
-        jFileChooser1.setToolTipText("");
-        jFileChooser1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFileChooser1.setOpaque(true);
-        jFileChooser1.setVisible(false);
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
-            }
-        });
-
-        jPanel45.setLayout(new java.awt.GridLayout(0, 2));
-
-        jPanel48.setBackground(new java.awt.Color(204, 204, 255));
-
-        jPanel50.setBackground(new java.awt.Color(255, 0, 255));
-
-        javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
-        jPanel50.setLayout(jPanel50Layout);
-        jPanel50Layout.setHorizontalGroup(
-            jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 11, Short.MAX_VALUE)
-        );
-        jPanel50Layout.setVerticalGroup(
-            jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel8.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel8.setLayout(new java.awt.GridLayout(4, 0));
-
-        jPanel46.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel29.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel29.setText("Add by student id:");
-
-        javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
-        jPanel46.setLayout(jPanel46Layout);
-        jPanel46Layout.setHorizontalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel46Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel46Layout.setVerticalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel46Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel8.add(jPanel46);
-
-        jPanel47.setBackground(new java.awt.Color(204, 204, 255));
-
-        textStudentID.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        textStudentID.setText("18120433");
-
-        jButton4.setBackground(new java.awt.Color(204, 153, 255));
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Add");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
-        jPanel47.setLayout(jPanel47Layout);
-        jPanel47Layout.setHorizontalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(textStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel47Layout.setVerticalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textStudentID)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-
-        jPanel8.add(jPanel47);
-
-        jPanel51.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel30.setText("Import from csv file:");
-
-        javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
-        jPanel51.setLayout(jPanel51Layout);
-        jPanel51Layout.setHorizontalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel51Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel51Layout.setVerticalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel51Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel8.add(jPanel51);
-
-        jPanel52.setBackground(new java.awt.Color(204, 204, 255));
-
-        jButton5.setBackground(new java.awt.Color(204, 153, 255));
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Import");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jPanel53.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel53.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel53MouseClicked(evt);
-            }
-        });
-
-        lableNameFileChooser.setBackground(new java.awt.Color(204, 204, 204));
-        lableNameFileChooser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lableNameFileChooser.setForeground(new java.awt.Color(0, 0, 0));
-        lableNameFileChooser.setText("Choose file");
-        lableNameFileChooser.setName("x"); // NOI18N
-
-        javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
-        jPanel53.setLayout(jPanel53Layout);
-        jPanel53Layout.setHorizontalGroup(
-            jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lableNameFileChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-        );
-        jPanel53Layout.setVerticalGroup(
-            jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lableNameFileChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
-        jPanel52.setLayout(jPanel52Layout);
-        jPanel52Layout.setHorizontalGroup(
-            jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel52Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel52Layout.setVerticalGroup(
-            jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel52Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
-        jPanel8.add(jPanel52);
-
-        javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
-        jPanel48.setLayout(jPanel48Layout);
-        jPanel48Layout.setHorizontalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel48Layout.setVerticalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                    .addComponent(jPanel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel45.add(jPanel48);
-
-        jPanel49.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel31.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel31.setText("Check for choosing");
-
-        jButton7.setBackground(new java.awt.Color(204, 153, 255));
-        jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("Add all");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        listCheckImport.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jScrollPane3.setViewportView(listCheckImport);
-
-        javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
-        jPanel49.setLayout(jPanel49Layout);
-        jPanel49Layout.setHorizontalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel49Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(jPanel49Layout.createSequentialGroup()
-                        .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel49Layout.setVerticalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel49Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel45.add(jPanel49);
-
-        jLabel28.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel28.setText("CourseID - Course name");
-
-        jButton6.setBackground(new java.awt.Color(102, 102, 0));
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton6.setText("Back to course info");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelAddMemberLayout = new javax.swing.GroupLayout(panelAddMember);
-        panelAddMember.setLayout(panelAddMemberLayout);
-        panelAddMemberLayout.setHorizontalGroup(
-            panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddMemberLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAddMemberLayout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelAddMemberLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        panelAddMemberLayout.setVerticalGroup(
-            panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddMemberLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(panelAddMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelAddMemberLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         panelCallrollEachWeek.setBackground(new java.awt.Color(255, 255, 255));
@@ -2112,7 +1787,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel56Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelNameCourseWeek1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addComponent(labelNameCourseWeek1, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel56Layout.setVerticalGroup(
@@ -2160,7 +1835,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelNotification1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addComponent(labelNotification1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2208,15 +1883,11 @@ public class StudentDashboard extends javax.swing.JFrame {
             panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelCallrollEachWeek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelAddMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCheckAttendance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelActionCourseLayout.setVerticalGroup(
             panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelCallrollEachWeek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelAddMember, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelActionCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCheckAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2281,12 +1952,6 @@ public class StudentDashboard extends javax.swing.JFrame {
         generatePanelEachWeek.setBackground(new java.awt.Color(255, 204, 153));
         generatePanelEachWeek.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 102, 102), new java.awt.Color(102, 102, 102), null));
         generatePanelEachWeek.setMinimumSize(new java.awt.Dimension(150, 80));
-//        generatePanelEachWeek.addMouseListener(new java.awt.event.MouseAdapter() {
-//            public void mouseClicked(java.awt.event.MouseEvent evt) {
-////click each week
-//
-//            }
-//        });
 
         javax.swing.JLabel labelWeekID = new javax.swing.JLabel();
         labelWeekID.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -2297,11 +1962,12 @@ public class StudentDashboard extends javax.swing.JFrame {
         callRowInEachWeek.setBackground(new java.awt.Color(153, 255, 153));
         callRowInEachWeek.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         callRowInEachWeek.setForeground(new java.awt.Color(51, 51, 51));
-        callRowInEachWeek.setText("call roll");
+        callRowInEachWeek.setText("Call roll");
         callRowInEachWeek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 curCourseWeek = course_week;
-                System.out.println("Click week " + curCourseWeek.getWeekID());
+
+//                System.out.println("Click week " + curCourseWeek.getWeekID());
                 clickCallrollEachWeek();
             }
         });
@@ -2314,7 +1980,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         javax.swing.JLabel labelTimeDuring1 = new javax.swing.JLabel();
         labelTimeDuring1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         labelTimeDuring1.setForeground(new java.awt.Color(0, 0, 0));
-        labelTimeDuring1.setText("Weekday: Thu " + course_week.getWeekday());
+        labelTimeDuring1.setText("Weekday: Thứ " + course_week.getWeekday());
 
         javax.swing.JLabel labelTimeDuring2 = new javax.swing.JLabel();
         labelTimeDuring2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -2367,6 +2033,7 @@ public class StudentDashboard extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 //                        panelEachCourse1MouseClicked(evt);
                 curCourse = course;
+                curUserCourse = UserCourseDAO.findByUserCourse(user, curCourse);
                 curListCourseWeek = CourseWeekDAO.getAllWeekByCourse(course);
                 clickEachCourse();
             }
@@ -2728,11 +2395,68 @@ public class StudentDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMembersActionPerformed
+    private void btnCheckAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAttendanceActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        Object[][] temp = new Object[1][];
+        temp[0] = new Object[]{
+            curCourse.getId(),
+            curCourse.getName(),
+            curUserCourse.isWeek_1(),
+            curUserCourse.isWeek_2(),
+            curUserCourse.isWeek_3(),
+            curUserCourse.isWeek_4(),
+            curUserCourse.isWeek_5(),
+            curUserCourse.isWeek_6(),
+            curUserCourse.isWeek_7(),
+            curUserCourse.isWeek_8(),
+            curUserCourse.isWeek_9(),
+            curUserCourse.isWeek_10(),
+            curUserCourse.isWeek_11(),
+            curUserCourse.isWeek_12(),
+            curUserCourse.isWeek_13(),
+            curUserCourse.isWeek_14(),
+            curUserCourse.isWeek_15()};
+        checkAttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
+                temp,
+                new String[]{
+                    "Mã Môn Học", "Tên Môn Học", "W 1", "W 2", "W 3", "W 4", "W 5", "W 6", "W 7", "W 8", "W 9", "W 10", "W 11", "W 12", "W 13", "W 14", "W 15"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
+        if (checkAttendanceTable.getColumnModel().getColumnCount() > 0) {
+            checkAttendanceTable.getColumnModel().getColumn(0).setMinWidth(50);
+            checkAttendanceTable.getColumnModel().getColumn(0).setPreferredWidth(120);
+            checkAttendanceTable.getColumnModel().getColumn(0).setMaxWidth(200);
+            checkAttendanceTable.getColumnModel().getColumn(1).setMinWidth(100);
+            checkAttendanceTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+            checkAttendanceTable.getColumnModel().getColumn(1).setMaxWidth(300);
+        }
+
+        checkAttendanceTable.revalidate();
+        checkAttendanceTable.repaint();
+
+        textFieldCourseID.setText(curCourse.getId());
+        textFieldCourseID.setEditable(false);
+
         setVisibleContentMain("panelActionCourse");
-        setVisibleContentActionCourse("panelListMember");
-    }//GEN-LAST:event_btnMembersActionPerformed
+        setVisibleContentActionCourse("panelCheckAttendance");
+    }//GEN-LAST:event_btnCheckAttendanceActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         // TODO add your handling code here:
@@ -2751,151 +2475,18 @@ public class StudentDashboard extends javax.swing.JFrame {
         setVisibleContentMain("panelCourses");
     }//GEN-LAST:event_btnImportActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBackToCourseInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToCourseInfoActionPerformed
         // TODO add your handling code here:
         clickEachCourse();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBackToCourseInfoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textFieldCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCourseIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textFieldCourseIDActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        String path = lableNameFileChooser.getName();
-        if (!"x".equals(path)) {
-            List<String> readFileCSV = util.handleCSV.readImportCSV(path);
-//            int numRowInCSV = readFileCSV.size();
-            String result = "";
-            int index = 0;
-            for (String e : readFileCSV) {
-                String eachResult = UserCourseDAO.addUser(e, curCourse, user);
-                if ("Add success!".equals(eachResult)) {
-                    index++;
-                } else {
-                    result += e + ": " + eachResult + "\n";
-                }
-            }
-            if (index != 0) {
-                result = "Add success! But\n" + result;
-            } else {
-                result = "Sorry,\n" + result;
-            }
-            JOptionPane.showMessageDialog(this, result);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please choose a file first!");
-        }
-
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String inputTextStudentID = textStudentID.getText();
-        String result = UserCourseDAO.addUser(inputTextStudentID, curCourse, user);
-        JOptionPane.showMessageDialog(this, result);
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jPanel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseClicked
-        // TODO add your handling code here:
-        jPanel45.setVisible(false);
-
-        jFileChooser1.setDialogTitle("Select a .csv file");
-
-//jFileChooser1.removeChoosableFileFilter(f)
-        // only allow files of .txt extension
-//        FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only .csv files", "csv");
-//        jFileChooser1.addChoosableFileFilter(restrict);
-        jFileChooser1.setVisible(true);
-
-        int result = jFileChooser1.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            lableNameFileChooser.setText(jFileChooser1.getSelectedFile().getName());
-            String path = jFileChooser1.getSelectedFile().getAbsolutePath();
-            lableNameFileChooser.setName(path);
-        } else if (result == JFileChooser.CANCEL_OPTION) {
-            lableNameFileChooser.setName("x");
-
-            System.out.println("Cancel was selected");
-        }
-        jFileChooser1.setVisible(false);
-        jPanel45.setVisible(true);
-//        int r = jFileChooser1.showOpenDialog(null);
-
-//        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-//
-//        // resctrict the user to select files of all types
-//        j.setAcceptAllFileFilterUsed(false);
-//
-//        // set a title for the dialog
-//        j.setDialogTitle("Select a .txt file");
-//
-//        // only allow files of .txt extension
-//        FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only .txt files", "txt");
-//        j.addChoosableFileFilter(restrict);
-//
-//        // invoke the showsOpenDialog function to show the save dialog
-//        int r = j.showOpenDialog(null);
-//
-//        // if the user selects a file
-//        if (r == JFileChooser.APPROVE_OPTION) {
-//            // set the label to the path of the selected file
-//            System.out.println("Name: " + j.getSelectedFile().getAbsolutePath());
-//        } // if the user cancelled the operation
-//        else {
-//            System.out.println("the user cancelled the operation");
-//        }
-    }//GEN-LAST:event_jPanel53MouseClicked
-
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // TODO add your handling code here:
-
-        // if the user selects a file
-//
-//        if (r == JFileChooser.APPROVE_OPTION) {
-//            // set the label to the path of the selected file
-//            System.out.println("file name: " + jFileChooser1.getSelectedFile().getAbsolutePath());
-//        } // if the user cancelled the operation
-//        else {
-//            System.out.println("cacnel");
-//        }
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        List<String> values = listCheckImport.getSelectedValuesList();
-
-        if (!values.isEmpty()) {
-            String result = "";
-            int index = 0;
-            for (String value : values) {
-                System.out.println("Value: " + value);
-                String MSSV = value.split(" ")[0];
-                String eachResult = UserCourseDAO.addUser(MSSV, curCourse, user);
-                if ("Add success!".equals(eachResult)) {
-                    index++;
-                } else {
-                    result += MSSV + ": " + eachResult + "\n";
-                }
-            }
-            if (index != 0) {
-                result = "Add success! But\n" + result;
-            } else {
-                result = "Sorry,\n" + result;
-            }
-            JOptionPane.showMessageDialog(this, result);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please choose at least a student!");
-        }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void panelEachWeekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEachWeekMouseClicked
         // TODO add your handling code here:
@@ -2913,12 +2504,32 @@ public class StudentDashboard extends javax.swing.JFrame {
         java.sql.Date curDate = new Date(System.currentTimeMillis());
         System.out.println("Cur day: " + curDate);
 
-        if (curCourseWeekDate.getDay() == curDate.getDay() && curCourseWeekDate.getMonth() == curDate.getMonth() && curCourseWeekDate.getYear() == curDate.getYear()) {
-            System.out.println("Equal");
+        if (isRightDate(curCourseWeekDate, curDate)) {
+            int isRightT = isRightTime(curCourseWeek.getTimeStart(), 120);
+            switch (isRightT) {
+                case 0:
+//                    xx User_Course updateUserCourse = UserCourseDAO.findByUserCourse(user, curCourse);
+                    curUserCourse.setRollCall(curCourseWeek.getWeekID());
+                    boolean isAttend = UserCourseDAO.rollCall(curUserCourse);
+                    if (isAttend) {
+                        JOptionPane.showMessageDialog(this, "Success!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failure!");
+                    }
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(this, "You are late!");
+                    break;
+                case -1:
+                    JOptionPane.showMessageDialog(this, "This time is soon!");
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         } else if (curCourseWeekDate.compareTo(curDate) < 0) {
-            System.out.println("Today is late");
+            JOptionPane.showMessageDialog(this, "Today is late!");
         } else {
-            System.out.println("Today is soon");
+            JOptionPane.showMessageDialog(this, "Today is soon!");
         }
 
     }//GEN-LAST:event_submitCallRollActionPerformed
@@ -2956,8 +2567,8 @@ public class StudentDashboard extends javax.swing.JFrame {
         labelTime1.setText("Thời gian học: "
                 + new SimpleDateFormat("HH:mm").format(curCourseWeek.getTimeStart())
                 + " - " + new SimpleDateFormat("HH:mm").format(curCourseWeek.getTimeFinish()));
-        labelDate1.setText("Ngày học: Thứ " + curCourseWeek.getWeekday() + " " + new SimpleDateFormat("dd/MM/yyyy").format(curCourseWeek.getDay()));
-
+        labelDate1.setText("Ngày học: Thứ " + curCourseWeek.getWeekday() + " ngày " + new SimpleDateFormat("dd/MM/yyyy").format(curCourseWeek.getDay()));
+        labelNotification1.setText("<html><p>Chỉ ghi nhận có mặt khi điểm danh truớc hoặc sau 15 phút kể từ lúc bắt đầu học!</p></html>");
 //        Course.setVisible(true);
 //        jScrollPane1.setVisible(false);
         setVisibleContentMain("panelActionCourse");
@@ -2976,6 +2587,38 @@ public class StudentDashboard extends javax.swing.JFrame {
         int hour = input.getHours();
         int minute = input.getMinutes();
         return new int[]{hour, minute};
+    }
+
+    static boolean isRightDate(java.sql.Date date1, java.sql.Date date2) {
+        return date1.getDay() == date2.getDay() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear();
+    }
+
+    static int isRightTime(java.sql.Time _timeInput, int deltaMinutes) {
+        long now = System.currentTimeMillis();
+        Time curTime = new Time(now);
+// 4h30 >< 5h15
+        int delta = 0;
+        if (_timeInput.getHours() - curTime.getHours() > 0) {
+            delta = (_timeInput.getHours() - curTime.getHours() - 1) * 60 + (60 - curTime.getMinutes()) + (_timeInput.getMinutes());
+        } else {
+            delta = (curTime.getHours() - _timeInput.getHours() - 1) * 60 + (60 - _timeInput.getMinutes()) + (curTime.getMinutes());
+        }
+        if (delta <= deltaMinutes) {
+            return 0;
+        } else {
+            if (curTime.getHours() - _timeInput.getHours() == 0) {
+                if (curTime.getMinutes() > _timeInput.getMinutes()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else if (curTime.getHours() - _timeInput.getHours() > 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+
     }
 
     static java.sql.Date parseDate(String inputDate) {
@@ -3083,8 +2726,10 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Navside;
     private javax.swing.JPanel OptionSetting;
+    private javax.swing.JButton btnBackToCourseInfo;
+    private javax.swing.JButton btnCheckAttendance;
     private javax.swing.JButton btnImport;
-    private javax.swing.JButton btnMembers;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton callRowInEachWeek;
     private javax.swing.JTable checkAttendanceTable;
     private javax.swing.JLabel emailLabel;
@@ -3105,13 +2750,6 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> inputYearFinish;
     private javax.swing.JComboBox<String> inputYearStart;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3131,12 +2769,7 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -3175,22 +2808,12 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
-    private javax.swing.JPanel jPanel45;
-    private javax.swing.JPanel jPanel46;
-    private javax.swing.JPanel jPanel47;
-    private javax.swing.JPanel jPanel48;
-    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel50;
-    private javax.swing.JPanel jPanel51;
-    private javax.swing.JPanel jPanel52;
-    private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel56;
@@ -3198,13 +2821,10 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelDate1;
     private javax.swing.JLabel labelNameCourseWeek1;
     private javax.swing.JLabel labelNotification1;
@@ -3213,10 +2833,7 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel labelTimeDuring1;
     private javax.swing.JLabel labelTimeDuring2;
     private javax.swing.JLabel labelWeekID;
-    private javax.swing.JLabel lableNameFileChooser;
-    private javax.swing.JList<String> listCheckImport;
     private javax.swing.JPanel panelActionCourse;
-    private javax.swing.JPanel panelAddMember;
     private javax.swing.JPanel panelCallrollEachWeek;
     private javax.swing.JPanel panelCheckAttendance;
     private javax.swing.JPanel panelCourses;
@@ -3228,10 +2845,10 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JButton submitCallRoll;
     private javax.swing.JLabel textDatefinishOutput;
     private javax.swing.JLabel textDatestartOutput;
+    private javax.swing.JTextField textFieldCourseID;
     private javax.swing.JLabel textIDOutput;
     private javax.swing.JLabel textNameOutput;
     private javax.swing.JLabel textRoomOutput;
-    private javax.swing.JTextField textStudentID;
     private javax.swing.JLabel textTimefinishOutput;
     private javax.swing.JLabel textTimestartoutput;
     private javax.swing.JLabel textWeekdayOutput;
@@ -3241,6 +2858,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 //    private List<User_Course> curListUserCourse;
     private List<Course_Week> curListCourseWeek;
     private Course_Week curCourseWeek;
+    private User_Course curUserCourse;
 
     private javax.swing.JFileChooser fileChooserComponent;
 }
