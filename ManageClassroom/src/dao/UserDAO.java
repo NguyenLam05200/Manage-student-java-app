@@ -30,6 +30,19 @@ public class UserDAO {
         return listUser;
     }
 
+    public static List<User> getListStudent() {
+        List<User> listUser = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from User where role = :role";
+        Query query = session.createQuery(hql);
+        query.setParameter("role", 1);
+
+        listUser = query.list();
+        session.getTransaction().commit();
+        return listUser;
+    }
+
     public static User findOneById(String id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -67,6 +80,20 @@ public class UserDAO {
         return true;
     }
 
+    public static boolean addUser(User user) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try {
+            session.save(user);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.out.println("Opps, " + e);
+            session.getTransaction().commit();
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws NoSuchAlgorithmException {
         User temp = findOneById("GV1");
 //        boolean x = handlePassword.comparePassword("1812043", temp.getPassword());
@@ -82,5 +109,12 @@ public class UserDAO {
 //        temp.setPassword(handlePassword.hashPassword("1"));
 //        changePassword(temp);
 //        System.out.println("user: " + temp == null);
+
+        for (int i = 0; i < 100; i++) {
+            String MSSV = "" + (18120435 + i + 1);
+            String name = "Full name " + MSSV;
+            User user = new User(MSSV, MSSV, util.handlePassword.hashPassword(MSSV), name, MSSV + "@student.hcmus.edu.vn", 1, (i % 2) == 0);
+            addUser(user);
+        }
     }
 }

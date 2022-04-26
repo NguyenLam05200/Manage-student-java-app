@@ -1010,7 +1010,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelCoursesLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                    .addComponent(Course, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
             .addGroup(panelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
@@ -2014,6 +2014,11 @@ public class TeacherDashboard extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setText("Add all");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         listCheckImport.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jScrollPane3.setViewportView(listCheckImport);
@@ -2147,7 +2152,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
             .addGroup(ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelActionCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelCourses, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE))
+                .addComponent(panelCourses, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE))
         );
         ContentLayout.setVerticalGroup(
             ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2581,15 +2586,13 @@ public class TeacherDashboard extends javax.swing.JFrame {
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         // TODO add your handling code here:
 
-        List<User> allUser = UserDAO.getListUser();
+        List<User> allUser = UserDAO.getListStudent();
         int n = allUser.size();
         String[] temp = new String[n];
         int index = 0;
         for (User x : allUser) {
-            if (x.getRole() == 1) {
-                temp[index] = "" + x.getId() + " - " + x.getName();
-                index++;
-            }
+            temp[index] = "" + x.getId() + " - " + x.getName();
+            index++;
         }
 
         listCheckImport.setModel(new javax.swing.AbstractListModel<String>() {
@@ -2603,7 +2606,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
                 return strings[i];
             }
         });
-        int[] indexs = listCheckImport.getSelectedIndices();
+
         setVisibleContentMain("panelActionCourse");
         setVisibleContentActionCourse("panelAddMember");
     }//GEN-LAST:event_btnImportActionPerformed
@@ -2707,9 +2710,23 @@ public class TeacherDashboard extends javax.swing.JFrame {
         String path = lableNameFileChooser.getName();
         if (!"x".equals(path)) {
             List<String> readFileCSV = util.handleCSV.readImportCSV(path);
-            for (String x : readFileCSV) {
-                System.out.println(x);
+//            int numRowInCSV = readFileCSV.size();
+            String result = "";
+            int index = 0;
+            for (String e : readFileCSV) {
+                String eachResult = UserCourseDAO.addUser(e, curCourse, user);
+                if ("Add success!".equals(eachResult)) {
+                    index++;
+                } else {
+                    result += e + ": " + eachResult + "\n";
+                }
             }
+            if (index != 0) {
+                result = "Add success! But\n" + result;
+            } else {
+                result = "Sorry,\n" + result;
+            }
+            JOptionPane.showMessageDialog(this, result);
         } else {
             JOptionPane.showMessageDialog(this, "Please choose a file first!");
         }
@@ -2732,8 +2749,6 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
     private void jPanel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseClicked
         // TODO add your handling code here:
-        System.out.println("Hello");
-
         jPanel45.setVisible(false);
 
         jFileChooser1.setDialogTitle("Select a .csv file");
@@ -2796,6 +2811,34 @@ public class TeacherDashboard extends javax.swing.JFrame {
 //            System.out.println("cacnel");
 //        }
     }//GEN-LAST:event_jFileChooser1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        List<String> values = listCheckImport.getSelectedValuesList();
+
+        if (!values.isEmpty()) {
+            String result = "";
+            int index = 0;
+            for (String value : values) {
+                System.out.println("Value: " + value);
+                String MSSV = value.split(" ")[0];
+                String eachResult = UserCourseDAO.addUser(MSSV, curCourse, user);
+                if ("Add success!".equals(eachResult)) {
+                    index++;
+                } else {
+                    result += MSSV + ": " + eachResult + "\n";
+                }
+            }
+            if (index != 0) {
+                result = "Add success! But\n" + result;
+            } else {
+                result = "Sorry,\n" + result;
+            }
+            JOptionPane.showMessageDialog(this, result);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please choose at least a student!");
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     public static Date addDays(Date date, int days) {
         Calendar c = Calendar.getInstance();
