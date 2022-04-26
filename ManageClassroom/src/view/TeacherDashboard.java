@@ -2556,8 +2556,18 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
         java.sql.Date curDate = parseDate(dateStart);
 
+        Calendar c = Calendar.getInstance();
+        c.setTime(curDate); // yourdate is an object of type Date
+
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); // this will for example return 3 for tuesday
+        System.out.println("dayOfWeek: " + dayOfWeek);
+
+        int delta = weekday - dayOfWeek;
+        if (delta < 0) {
+            delta = 7 + delta;
+        }
         for (int i = 0; i < 15; i++) {
-            Course_Week course_week = new Course_Week(i + 1, inputNewCourse, timeCur, user, inputNewCourse.getWeekday(), addDays(curDate, 7 * i), inputNewCourse.getTimeStart(), inputNewCourse.getTimeFinish(), roomName);
+            Course_Week course_week = new Course_Week(i + 1, inputNewCourse, timeCur, user, inputNewCourse.getWeekday(), addDays(curDate, 7 * i + delta), inputNewCourse.getTimeStart(), inputNewCourse.getTimeFinish(), roomName);
             CourseWeekDAO.addWeek(course_week);
         }
         if (isAdd) {

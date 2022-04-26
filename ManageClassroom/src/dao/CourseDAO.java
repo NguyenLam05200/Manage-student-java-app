@@ -52,6 +52,25 @@ public class CourseDAO {
         }
     }
 
+    public static List<Course> getCoursesByStudent(User user) {
+        if (user == null) {
+            System.out.println("Not user");
+            return null;
+        } else {
+            List<Course> listCourse = null;
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            String hql = "from Course where userID = :inputId";
+            Query query = session.createQuery(hql);
+            query.setParameter("inputId", user);
+
+            listCourse = query.list();
+            session.getTransaction().commit();
+
+            return listCourse;
+        }
+    }
+
     public static Course findOneById(String id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();

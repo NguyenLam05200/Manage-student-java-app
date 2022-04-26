@@ -11,6 +11,7 @@ package dao;
 import entity.Course;
 import entity.User;
 import entity.User_Course;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -35,6 +36,33 @@ public class UserCourseDAO {
             session.getTransaction().commit();
 
             return listUserCourse;
+        }
+    }
+
+    public static List<Course> findAllCourseByStudent(User user) {
+        if (user == null) {
+            System.out.println("Not course input");
+            return null;
+        } else {
+            List<User_Course> listUserCourse = null;
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            String hql = "from User_Course where userID = :inputId";
+            Query query = session.createQuery(hql);
+            query.setParameter("inputId", user);
+
+            listUserCourse = query.list();
+            session.getTransaction().commit();
+
+            List<Course> result = new ArrayList<>();
+            for (User_Course user_course : listUserCourse) {
+                Course x = CourseDAO.findOneById(user_course.getCourseID().getId());
+//                result.contains(user_course.getCourseID());
+                if (!result.contains(x)) {
+                    result.add(x);
+                }
+            }
+            return result;
         }
     }
 
