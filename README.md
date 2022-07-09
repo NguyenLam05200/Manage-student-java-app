@@ -11,11 +11,11 @@
   và import trở lại).
   3. Xem kết quả điểm danh: chọn môn, hiển thị n dòng là n sinh viên, và 15 cột là 15 tuần. Có thể edit 1 ô 
   điểm danh (đánh dấu vắng hoặc đánh dấu có mặt)
-Sinh viên:
+- Sinh viên:
   1. Điểm danh. Chỉ điểm danh khi chọn chức năng đúng ngày, giờ.
   2. Xem kết quả điểm danh của mình, hiển thị những hôm nào vắng, hôm nào có đi học, hôm nào chưa 
   có dữ liệu (do chưa có ngày).
-Yêu cầu khác:
+- Yêu cầu khác:
   - Đổi password.
   - Lưu ý, sv mới vào hệ thống, sẽ được phát sinh username/password là MSSV/MSSV. Khi sv log in lần đầu, 
   phải bắt buộc sv đổi password.
