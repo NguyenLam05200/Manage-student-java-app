@@ -1,6 +1,6 @@
 # Manage-student-java-app
 ### Database: MySQL, use ORM hibernate.
-### UI: Java Swing
+### UI: Java Swing (See more UI in file Report.pdf)
 
 Ứng dụng điểm danh học sinh đơn giản cho 2 loại người dùng:
 - Giáo vụ:
